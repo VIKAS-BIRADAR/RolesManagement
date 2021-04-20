@@ -1,0 +1,12 @@
+D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\net5.0\RoleManagement.Data.deps.json
+D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\net5.0\RoleManagement.Data.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\net5.0\ref\RoleManagement.Data.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\net5.0\RoleManagement.Data.pdb
+D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\net5.0\RoleManagement.Data.csprojAssemblyReference.cache
+D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\net5.0\RoleManagement.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\net5.0\RoleManagement.Data.AssemblyInfoInputs.cache
+D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\net5.0\RoleManagement.Data.AssemblyInfo.cs
+D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\net5.0\RoleManagement.Data.csproj.CoreCompileInputs.cache
+D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\net5.0\RoleManagement.Data.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\net5.0\ref\RoleManagement.Data.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\net5.0\RoleManagement.Data.pdb

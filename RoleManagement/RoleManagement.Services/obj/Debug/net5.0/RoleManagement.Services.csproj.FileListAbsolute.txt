@@ -1,0 +1,15 @@
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\net5.0\RoleManagement.Services.deps.json
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\net5.0\RoleManagement.Services.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\net5.0\ref\RoleManagement.Services.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\net5.0\RoleManagement.Services.pdb
+D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\net5.0\RoleManagement.Services.csprojAssemblyReference.cache
+D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\net5.0\RoleManagement.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\net5.0\RoleManagement.Services.AssemblyInfoInputs.cache
+D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\net5.0\RoleManagement.Services.AssemblyInfo.cs
+D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\net5.0\RoleManagement.Services.csproj.CoreCompileInputs.cache
+D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\net5.0\RoleManagement.Services.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\net5.0\ref\RoleManagement.Services.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\net5.0\RoleManagement.Services.pdb
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\net5.0\RoleManagement.Data.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\net5.0\RoleManagement.Data.pdb
+D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\net5.0\RoleManagement.Services.csproj.CopyComplete

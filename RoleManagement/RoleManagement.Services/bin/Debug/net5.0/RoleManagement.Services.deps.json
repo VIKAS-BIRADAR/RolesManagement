@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "RoleManagement.Services/1.0.0": {
+        "dependencies": {
+          "RoleManagement.Data": "1.0.0"
+        },
+        "runtime": {
+          "RoleManagement.Services.dll": {}
+        }
+      },
+      "RoleManagement.Data/1.0.0": {
+        "runtime": {
+          "RoleManagement.Data.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RoleManagement.Services/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RoleManagement.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
