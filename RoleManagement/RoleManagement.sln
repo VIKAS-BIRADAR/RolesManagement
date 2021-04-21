@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleManagement.Data", "RoleManagement.Data\RoleManagement.Data.csproj", "{7464774F-42B4-4848-9DA7-EC8CC6B50DDE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleManagement.Services", "RoleManagement.Services\RoleManagement.Services.csproj", "{DBBDCA77-C970-4B46-94E7-6C8F7FE58CA6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleManagement.API", "RoleManagement.API\RoleManagement.API.csproj", "{5958BFCA-3A45-40AE-9C2A-015605D52F2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleManagement.Web", "RoleManagement.Web\RoleManagement.Web.csproj", "{34E0FBC5-75AF-4BA6-B2E2-7A70871731A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleManagement.Services", "RoleManagement.Services\RoleManagement.Services.csproj", "{8CD0AF0F-54C4-4990-BB94-80033EC53FF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleManagement.Data", "RoleManagement.Data\RoleManagement.Data.csproj", "{E2958FBD-36D1-4C36-B96D-CE91AF0A8BE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7464774F-42B4-4848-9DA7-EC8CC6B50DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7464774F-42B4-4848-9DA7-EC8CC6B50DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7464774F-42B4-4848-9DA7-EC8CC6B50DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7464774F-42B4-4848-9DA7-EC8CC6B50DDE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBBDCA77-C970-4B46-94E7-6C8F7FE58CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBBDCA77-C970-4B46-94E7-6C8F7FE58CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBBDCA77-C970-4B46-94E7-6C8F7FE58CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBBDCA77-C970-4B46-94E7-6C8F7FE58CA6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5958BFCA-3A45-40AE-9C2A-015605D52F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5958BFCA-3A45-40AE-9C2A-015605D52F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5958BFCA-3A45-40AE-9C2A-015605D52F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +25,14 @@ Global
 		{34E0FBC5-75AF-4BA6-B2E2-7A70871731A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34E0FBC5-75AF-4BA6-B2E2-7A70871731A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34E0FBC5-75AF-4BA6-B2E2-7A70871731A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CD0AF0F-54C4-4990-BB94-80033EC53FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CD0AF0F-54C4-4990-BB94-80033EC53FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CD0AF0F-54C4-4990-BB94-80033EC53FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CD0AF0F-54C4-4990-BB94-80033EC53FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2958FBD-36D1-4C36-B96D-CE91AF0A8BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2958FBD-36D1-4C36-B96D-CE91AF0A8BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2958FBD-36D1-4C36-B96D-CE91AF0A8BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2958FBD-36D1-4C36-B96D-CE91AF0A8BE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

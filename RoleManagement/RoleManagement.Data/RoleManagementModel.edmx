@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RolesManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoleTypeId" Type="int" />
+          <Property Name="EffectiveFrom" Type="date" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="CreateDate" Type="date" />
+          <Property Name="ModifyDate" Type="date" />
+        </EntityType>
+        <EntityType Name="RoleType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="isActive" Type="int" />
+        </EntityType>
+        <Association Name="FK__Roles__RoleTypeI__29572725">
+          <End Role="RoleType" Type="Self.RoleType" Multiplicity="0..1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="RoleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DeleteData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="R_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="InsertData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="R_Name" Type="varchar" Mode="In" />
+          <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
+          <Parameter Name="R_EffectiveFrom" Type="date" Mode="In" />
+          <Parameter Name="R_isActive" Type="int" Mode="In" />
+          <Parameter Name="R_CreateDate" Type="date" Mode="In" />
+          <Parameter Name="R_ModifyDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="UpdateData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="R_id" Type="int" Mode="In" />
+          <Parameter Name="R_Name" Type="varchar" Mode="In" />
+          <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
+          <Parameter Name="R_EffectiveFrom" Type="date" Mode="In" />
+          <Parameter Name="R_isActive" Type="int" Mode="In" />
+          <Parameter Name="R_CreateDate" Type="date" Mode="In" />
+          <Parameter Name="R_ModifyDate" Type="date" Mode="In" />
+        </Function>
+        <EntityContainer Name="RolesManagementModelStoreContainer">
+          <EntitySet Name="RoleType" EntityType="Self.RoleType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Roles].[id] AS [id], 
+    [Roles].[Name] AS [Name], 
+    [Roles].[RoleTypeId] AS [RoleTypeId], 
+    [Roles].[EffectiveFrom] AS [EffectiveFrom], 
+    [Roles].[isActive] AS [isActive], 
+    [Roles].[CreateDate] AS [CreateDate], 
+    [Roles].[ModifyDate] AS [ModifyDate]
+    FROM [dbo].[Roles] AS [Roles]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Roles__RoleTypeI__29572725" Association="Self.FK__Roles__RoleTypeI__29572725">
+            <End Role="RoleType" EntitySet="RoleType" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RolesManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="RoleType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isActive" Type="Int32" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Roles__RoleTypeI__29572725" FromRole="RoleType" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleTypeId" Type="Int32" />
+          <Property Name="EffectiveFrom" Type="DateTime" Precision="0" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="RoleType" Relationship="Self.FK__Roles__RoleTypeI__29572725" FromRole="Roles" ToRole="RoleType" />
+        </EntityType>
+        <Association Name="FK__Roles__RoleTypeI__29572725">
+          <End Role="RoleType" Type="Self.RoleType" Multiplicity="0..1" />
+          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="RoleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RolesManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RoleTypes" EntityType="Self.RoleType" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <AssociationSet Name="FK__Roles__RoleTypeI__29572725" Association="Self.FK__Roles__RoleTypeI__29572725">
+            <End Role="RoleType" EntitySet="RoleTypes" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <FunctionImport Name="DeleteData">
+            <Parameter Name="R_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetData" ReturnType="Collection(RolesManagementModel.GetData_Result)" />
+          <FunctionImport Name="InsertData">
+            <Parameter Name="R_Name" Mode="In" Type="String" />
+            <Parameter Name="R_RoleTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="R_EffectiveFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="R_isActive" Mode="In" Type="Int32" />
+            <Parameter Name="R_CreateDate" Mode="In" Type="DateTime" />
+            <Parameter Name="R_ModifyDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateData">
+            <Parameter Name="R_id" Mode="In" Type="Int32" />
+            <Parameter Name="R_Name" Mode="In" Type="String" />
+            <Parameter Name="R_RoleTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="R_EffectiveFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="R_isActive" Mode="In" Type="Int32" />
+            <Parameter Name="R_CreateDate" Mode="In" Type="DateTime" />
+            <Parameter Name="R_ModifyDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetData_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="RoleTypeId" Nullable="true" />
+          <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" />
+          <Property Type="Int32" Name="isActive" Nullable="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" />
+          <Property Type="DateTime" Name="ModifyDate" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RolesManagementModelStoreContainer" CdmEntityContainer="RolesManagementEntities">
+          <EntitySetMapping Name="RoleTypes">
+            <EntityTypeMapping TypeName="RolesManagementModel.RoleType">
+              <MappingFragment StoreEntitySet="RoleType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="RolesManagementModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RoleTypeId" ColumnName="RoleTypeId" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteData" FunctionName="RolesManagementModel.Store.DeleteData" />
+          <FunctionImportMapping FunctionImportName="GetData" FunctionName="RolesManagementModel.Store.GetData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RolesManagementModel.GetData_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RoleTypeId" ColumnName="RoleTypeId" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertData" FunctionName="RolesManagementModel.Store.InsertData" />
+          <FunctionImportMapping FunctionImportName="UpdateData" FunctionName="RolesManagementModel.Store.UpdateData" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

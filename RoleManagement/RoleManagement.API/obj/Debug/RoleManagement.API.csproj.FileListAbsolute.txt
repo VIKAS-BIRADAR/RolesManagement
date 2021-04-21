@@ -65,3 +65,7 @@ D:\RoleManagement\RoleManagement\RoleManagement.API\obj\Debug\RoleManagement.API
 D:\RoleManagement\RoleManagement\RoleManagement.API\obj\Debug\RoleManagement.API.csproj.CopyComplete
 D:\RoleManagement\RoleManagement\RoleManagement.API\obj\Debug\RoleManagement.API.dll
 D:\RoleManagement\RoleManagement\RoleManagement.API\obj\Debug\RoleManagement.API.pdb
+D:\RoleManagement\RoleManagement\RoleManagement.API\bin\RoleManagement.Data.dll
+D:\RoleManagement\RoleManagement\RoleManagement.API\bin\RoleManagement.Services.dll
+D:\RoleManagement\RoleManagement\RoleManagement.API\bin\RoleManagement.Data.pdb
+D:\RoleManagement\RoleManagement\RoleManagement.API\bin\RoleManagement.Services.pdb

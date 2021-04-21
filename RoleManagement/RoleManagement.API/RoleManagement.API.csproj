@@ -106,11 +106,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RoleManagement.Data\RoleManagement.Data.csproj">
-      <Project>{7464774f-42b4-4848-9da7-ec8cc6b50dde}</Project>
+      <Project>{e2958fbd-36d1-4c36-b96d-ce91af0a8be9}</Project>
       <Name>RoleManagement.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\RoleManagement.Services\RoleManagement.Services.csproj">
-      <Project>{dbbdca77-c970-4b46-94e7-6c8f7fe58ca6}</Project>
+      <Project>{8cd0af0f-54c4-4990-bb94-80033ec53ff3}</Project>
       <Name>RoleManagement.Services</Name>
     </ProjectReference>
   </ItemGroup>
