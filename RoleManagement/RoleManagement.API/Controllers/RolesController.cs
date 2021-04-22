@@ -14,20 +14,23 @@ using System.Web.Http.Description;
 
 namespace RoleManagement.API.Controllers
 {
+    [RoutePrefix("api/Roles")]
     public class RolesController : ApiController
     {
         [HttpGet]
-        public Roles Get()
+
+        public IEnumerable<Roles> Get()
         {
             try
             {
+
                 RolesService obj = new RolesService();
-                Roles modelRoles = obj.GetRoleDetails();
+                List<Roles> modelRoles = obj.GetRoleDetails();
                 return modelRoles;
             }
-            catch(Exception e) 
+            catch (Exception ex)
             {
-                throw e;
+                throw ex;
             }
         }
 
@@ -49,7 +52,39 @@ namespace RoleManagement.API.Controllers
                 throw e;
             }
         }
+        [HttpPut]
+        [ResponseType(typeof(Roles))]
+        public string Edit(Roles obj)
+        {
+            try
+            {
+                RolesService obj1 = new RolesService();
+                Int32 message = 0;
+                message = obj1.UpdateRoles(obj);
+                return message.ToString();
+
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        [HttpDelete]
+        public string Delete(int id)
+        {
+            try
+            {
+                RolesService obj = new RolesService();
+                Int32 message = 0;
+                message = obj.DeleteRoles(id);
+                return message.ToString();
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
     }
-    
+
 }
