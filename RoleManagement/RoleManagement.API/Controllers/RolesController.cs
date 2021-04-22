@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using RoleManagement.Services;
 using RoleManagement.Services.Services;
+using System.Web.Http.Description;
 
 namespace RoleManagement.API.Controllers
 {
@@ -30,6 +31,25 @@ namespace RoleManagement.API.Controllers
             }
         }
 
+        [HttpPost]
+        [ResponseType(typeof(Roles))]
+        public string Post(Roles obj)
+        {
+            try
+            {
+                RolesService obj1 = new RolesService();
+                Int32 message = 0;
+
+                if ((obj.Name != null) && (obj.EffectiveFrom != null)) message = obj1.InsertRole(obj);
+                else message = -1;
+                return message.ToString();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
     }
+    
 }

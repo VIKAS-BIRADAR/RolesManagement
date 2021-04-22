@@ -61,5 +61,54 @@ namespace RoleManagement.Services.Services
                 }
             }
         }
+        public Int32 InsertRole(Roles obj)
+        {
+            dbConnector objConn = new dbConnector();
+            SqlConnection Conn = objConn.GetConnection;
+            Conn.Open();
+
+            int result = 0;
+
+            try
+            {
+                if (Conn.State != System.Data.ConnectionState.Open) Conn.Open();
+
+                SqlCommand objCommand = new SqlCommand("InsertData", Conn);
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.Parameters.AddWithValue("@Name", obj.Name);
+                objCommand.Parameters.AddWithValue("@RoleTypeId", obj.RoleTypeId);
+                objCommand.Parameters.AddWithValue("@EffectiveFrom", obj.EffectiveFrom);
+                objCommand.Parameters.AddWithValue("@isActive", obj.isActive);
+                objCommand.Parameters.AddWithValue("@CreateDate", obj.CreateDate);
+                objCommand.Parameters.AddWithValue("@ModifyDate", obj.ModifyDate);
+
+                result = Convert.ToInt32(objCommand.ExecuteScalar());
+
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (Conn != null)
+                {
+                    if (Conn.State == ConnectionState.Open)
+                    {
+                        Conn.Close();
+                        Conn.Dispose();
+                    }
+                }
+            }
+        }
+
     }
 }
