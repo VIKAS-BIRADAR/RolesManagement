@@ -7,3 +7,8 @@ D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\RoleManagemen
 D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\RoleManagement.Services.csproj.CopyComplete
 D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\RoleManagement.Services.dll
 D:\RoleManagement\RoleManagement\RoleManagement.Services\obj\Debug\RoleManagement.Services.pdb
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\RoleManagement.Data.dll.config
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\System.Data.SqlClient.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\EntityFramework.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\System.Data.SqlClient.xml
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\EntityFramework.xml

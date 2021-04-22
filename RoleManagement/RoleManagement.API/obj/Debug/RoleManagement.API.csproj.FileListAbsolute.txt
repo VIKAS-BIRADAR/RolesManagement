@@ -69,3 +69,6 @@ D:\RoleManagement\RoleManagement\RoleManagement.API\bin\RoleManagement.Data.dll
 D:\RoleManagement\RoleManagement\RoleManagement.API\bin\RoleManagement.Services.dll
 D:\RoleManagement\RoleManagement\RoleManagement.API\bin\RoleManagement.Data.pdb
 D:\RoleManagement\RoleManagement\RoleManagement.API\bin\RoleManagement.Services.pdb
+D:\RoleManagement\RoleManagement\RoleManagement.API\bin\RoleManagement.Data.dll.config
+D:\RoleManagement\RoleManagement\RoleManagement.API\bin\EntityFramework.dll
+D:\RoleManagement\RoleManagement\RoleManagement.API\bin\EntityFramework.xml

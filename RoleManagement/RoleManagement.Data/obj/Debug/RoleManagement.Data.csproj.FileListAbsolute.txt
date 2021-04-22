@@ -3,3 +3,10 @@ D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\RoleManagement.Da
 D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\RoleManagement.Data.csproj.CoreCompileInputs.cache
 D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\RoleManagement.Data.dll
 D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\RoleManagement.Data.pdb
+D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\RoleManagement.Data.dll.config
+D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\EntityFramework.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\EntityFramework.xml
+D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\RoleManagement.Data.csprojAssemblyReference.cache
+D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\RoleManagement.Data.csproj.CopyComplete

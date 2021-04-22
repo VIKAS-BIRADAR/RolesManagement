@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RolesManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="RoleTypeId" Type="int" />
+    <Property Name="EffectiveFrom" Type="date" />
+    <Property Name="isActive" Type="int" />
+    <Property Name="CreateDate" Type="date" />
+    <Property Name="ModifyDate" Type="date" />
+  </EntityType>
+  <EntityType Name="RoleType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="isActive" Type="int" />
+  </EntityType>
+  <Association Name="FK__Roles__RoleTypeI__29572725">
+    <End Role="RoleType" Type="Self.RoleType" Multiplicity="0..1" />
+    <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="RoleTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DeleteData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="InsertData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_Name" Type="varchar" Mode="In" />
+    <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
+    <Parameter Name="R_EffectiveFrom" Type="date" Mode="In" />
+    <Parameter Name="R_isActive" Type="int" Mode="In" />
+    <Parameter Name="R_CreateDate" Type="date" Mode="In" />
+    <Parameter Name="R_ModifyDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="UpdateData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_id" Type="int" Mode="In" />
+    <Parameter Name="R_Name" Type="varchar" Mode="In" />
+    <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
+    <Parameter Name="R_EffectiveFrom" Type="date" Mode="In" />
+    <Parameter Name="R_isActive" Type="int" Mode="In" />
+    <Parameter Name="R_CreateDate" Type="date" Mode="In" />
+    <Parameter Name="R_ModifyDate" Type="date" Mode="In" />
+  </Function>
+  <EntityContainer Name="RolesManagementModelStoreContainer">
+    <EntitySet Name="RoleType" EntityType="Self.RoleType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Roles].[id] AS [id], 
+    [Roles].[Name] AS [Name], 
+    [Roles].[RoleTypeId] AS [RoleTypeId], 
+    [Roles].[EffectiveFrom] AS [EffectiveFrom], 
+    [Roles].[isActive] AS [isActive], 
+    [Roles].[CreateDate] AS [CreateDate], 
+    [Roles].[ModifyDate] AS [ModifyDate]
+    FROM [dbo].[Roles] AS [Roles]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Roles__RoleTypeI__29572725" Association="Self.FK__Roles__RoleTypeI__29572725">
+      <End Role="RoleType" EntitySet="RoleType" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
