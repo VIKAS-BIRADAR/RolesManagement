@@ -105,5 +105,62 @@ namespace RoleManagement.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateData", r_idParameter, r_NameParameter, r_RoleTypeIdParameter, r_EffectiveFromParameter, r_isActiveParameter, r_CreateDateParameter, r_ModifyDateParameter);
         }
+    
+        public virtual int DeleteRoleData(Nullable<int> r_id)
+        {
+            var r_idParameter = r_id.HasValue ?
+                new ObjectParameter("R_id", r_id) :
+                new ObjectParameter("R_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteRoleData", r_idParameter);
+        }
+    
+        public virtual ObjectResult<GetRoleType_Result> GetRoleType()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetRoleType_Result>("GetRoleType");
+        }
+    
+        public virtual int InsertRoleType(string r_Name, Nullable<int> r_isActive)
+        {
+            var r_NameParameter = r_Name != null ?
+                new ObjectParameter("R_Name", r_Name) :
+                new ObjectParameter("R_Name", typeof(string));
+    
+            var r_isActiveParameter = r_isActive.HasValue ?
+                new ObjectParameter("R_isActive", r_isActive) :
+                new ObjectParameter("R_isActive", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertRoleType", r_NameParameter, r_isActiveParameter);
+        }
+    
+        public virtual int UpdateRoleData(Nullable<int> r_id, string r_Name, Nullable<int> r_isActive)
+        {
+            var r_idParameter = r_id.HasValue ?
+                new ObjectParameter("R_id", r_id) :
+                new ObjectParameter("R_id", typeof(int));
+    
+            var r_NameParameter = r_Name != null ?
+                new ObjectParameter("R_Name", r_Name) :
+                new ObjectParameter("R_Name", typeof(string));
+    
+            var r_isActiveParameter = r_isActive.HasValue ?
+                new ObjectParameter("R_isActive", r_isActive) :
+                new ObjectParameter("R_isActive", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateRoleData", r_idParameter, r_NameParameter, r_isActiveParameter);
+        }
+    
+        public virtual int InsertRoleTypeData(string r_Name, Nullable<int> r_isActive)
+        {
+            var r_NameParameter = r_Name != null ?
+                new ObjectParameter("R_Name", r_Name) :
+                new ObjectParameter("R_Name", typeof(string));
+    
+            var r_isActiveParameter = r_isActive.HasValue ?
+                new ObjectParameter("R_isActive", r_isActive) :
+                new ObjectParameter("R_isActive", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertRoleTypeData", r_NameParameter, r_isActiveParameter);
+        }
     }
 }

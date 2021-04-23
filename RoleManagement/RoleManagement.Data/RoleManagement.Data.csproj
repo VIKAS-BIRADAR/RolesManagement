@@ -56,6 +56,9 @@
     <Compile Include="GetData_Result.cs">
       <DependentUpon>RoleManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetRoleType_Result.cs">
+      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\RoleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

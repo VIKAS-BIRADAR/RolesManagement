@@ -29,11 +29,11 @@ Execute InsertData
   As
   Begin
   Update Roles set
-  Name =@R_Name,RoleTypeId= @R_RoleTypeId,EffectiveFrom=@R_EffectiveFrom,@R_isActive=isActive,CreateDate=@R_CreateDate,ModifyDate=@R_ModifyDate where id = @R_id
+  Name =@R_Name,RoleTypeId= @R_RoleTypeId,EffectiveFrom=@R_EffectiveFrom,isActive=@R_isActive,CreateDate=@R_CreateDate,ModifyDate=@R_ModifyDate where id = @R_id
   END
 
   Execute UpdateData 
- @R_id = 5,
+ @R_id = 4,
  @R_Name ='Admin',
  @R_RoleTypeId =2,
  @R_EffectiveFrom = '2-02-2021',
@@ -43,6 +43,8 @@ Execute InsertData
 
  Execute GetData
 
+ Drop Procedure UpdateData
+
  Create Procedure DeleteData(@R_id int)
  As
  Begin
@@ -50,7 +52,61 @@ Execute InsertData
  END
 
  Execute DeleteData
- @R_id = 5
+ @R_id = 13
+
+ Create Procedure GetRoleType
+ As
+BEGIN
+      select * from RoleType
+END 
+
+Exec GetRoleType
+
+Create Procedure InsertRoleTypeData(@R_Name varchar(10), @R_isActive int)
+As
+Begin 
+     insert into RoleType(Name,isActive) values (@R_Name,@R_isActive )
+END   
+
+Exec InsertRoleTypeData
+ @R_Name ='Admin',
+ @R_isActive = 1
+
+
+  Create Procedure UpdateRoleData(@R_id int,@R_Name Varchar(10), @R_isActive int)
+  As
+  Begin
+  Update RoleType set
+  Name=@R_Name,isActive=@R_isActive where ID = @R_id
+  END
+
+ 
+
+
+
+ Exec UpdateRoleData
+ @R_id=4,
+ @R_Name ='HR',
+ @R_isActive = 0
+
+ Exec GetRoleType
+ 
+ Create Procedure DeleteRoleData(@R_id int)
+ As
+ Begin
+ Delete from RoleType Where ID = @R_id
+ END
+
+ Exec DeleteRoleData
+ @R_id = 4
+
+
+
+
+
+
+
+
 
 
 

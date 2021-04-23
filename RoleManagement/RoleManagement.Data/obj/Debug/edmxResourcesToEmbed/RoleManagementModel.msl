@@ -39,5 +39,17 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="InsertData" FunctionName="RolesManagementModel.Store.InsertData" />
     <FunctionImportMapping FunctionImportName="UpdateData" FunctionName="RolesManagementModel.Store.UpdateData" />
+    <FunctionImportMapping FunctionImportName="DeleteRoleData" FunctionName="RolesManagementModel.Store.DeleteRoleData" />
+    <FunctionImportMapping FunctionImportName="GetRoleType" FunctionName="RolesManagementModel.Store.GetRoleType">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RolesManagementModel.GetRoleType_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateRoleData" FunctionName="RolesManagementModel.Store.UpdateRoleData" />
+    <FunctionImportMapping FunctionImportName="InsertRoleTypeData" FunctionName="RolesManagementModel.Store.InsertRoleTypeData" />
   </EntityContainerMapping>
 </Mapping>

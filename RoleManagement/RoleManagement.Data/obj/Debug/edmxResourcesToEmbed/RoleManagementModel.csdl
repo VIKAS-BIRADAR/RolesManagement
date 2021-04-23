@@ -63,6 +63,23 @@
       <Parameter Name="R_CreateDate" Mode="In" Type="DateTime" />
       <Parameter Name="R_ModifyDate" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="DeleteRoleData">
+      <Parameter Name="R_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetRoleType" ReturnType="Collection(RolesManagementModel.GetRoleType_Result)" />
+    <FunctionImport Name="InsertRoleType">
+      <Parameter Name="R_Name" Mode="In" Type="String" />
+      <Parameter Name="R_isActive" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateRoleData">
+      <Parameter Name="R_id" Mode="In" Type="Int32" />
+      <Parameter Name="R_Name" Mode="In" Type="String" />
+      <Parameter Name="R_isActive" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertRoleTypeData">
+      <Parameter Name="R_Name" Mode="In" Type="String" />
+      <Parameter Name="R_isActive" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GetData_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -72,5 +89,10 @@
     <Property Type="Int32" Name="isActive" Nullable="true" />
     <Property Type="DateTime" Name="CreateDate" Nullable="true" />
     <Property Type="DateTime" Name="ModifyDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetRoleType_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="isActive" Nullable="true" />
   </ComplexType>
 </Schema>
