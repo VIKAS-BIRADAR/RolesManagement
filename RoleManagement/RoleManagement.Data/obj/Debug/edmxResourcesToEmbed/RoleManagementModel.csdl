@@ -5,22 +5,21 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="isActive" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
     <NavigationProperty Name="Roles" Relationship="Self.FK__Roles__RoleTypeI__29572725" FromRole="RoleType" ToRole="Roles" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="Name" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="RoleTypeId" Type="Int32" />
-    <Property Name="EffectiveFrom" Type="DateTime" Precision="0" />
-    <Property Name="isActive" Type="Int32" />
-    <Property Name="CreateDate" Type="DateTime" Precision="0" />
-    <Property Name="ModifyDate" Type="DateTime" Precision="0" />
+    <Property Name="EffectiveFrom" Type="DateTime" Precision="3" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="RoleType" Relationship="Self.FK__Roles__RoleTypeI__29572725" FromRole="Roles" ToRole="RoleType" />
   </EntityType>
   <Association Name="FK__Roles__RoleTypeI__29572725">
@@ -35,22 +34,33 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="RolesManagementEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="RolesManagementEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="RoleTypes" EntityType="Self.RoleType" />
     <EntitySet Name="Roles" EntityType="Self.Role" />
     <AssociationSet Name="FK__Roles__RoleTypeI__29572725" Association="Self.FK__Roles__RoleTypeI__29572725">
       <End Role="RoleType" EntitySet="RoleTypes" />
       <End Role="Roles" EntitySet="Roles" />
     </AssociationSet>
-    <FunctionImport Name="DeleteData">
+    <FunctionImport Name="spDeleteRole">
       <Parameter Name="R_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="GetData" ReturnType="Collection(RolesManagementModel.GetData_Result)" />
-    <FunctionImport Name="InsertData">
+    <FunctionImport Name="spGetRole" ReturnType="Collection(RolesManagementModel.spGetRole_Result)" />
+    <FunctionImport Name="spGetRoles" ReturnType="Collection(RolesManagementModel.spGetRoles_Result)" />
+    <FunctionImport Name="spGetRoleType" ReturnType="Collection(RolesManagementModel.spGetRoleType_Result)" />
+    <FunctionImport Name="spInsertRole">
       <Parameter Name="R_Name" Mode="In" Type="String" />
       <Parameter Name="R_RoleTypeId" Mode="In" Type="Int32" />
       <Parameter Name="R_EffectiveFrom" Mode="In" Type="DateTime" />
-      <Parameter Name="R_isActive" Mode="In" Type="Int32" />
+      <Parameter Name="R_isActive" Mode="In" Type="Boolean" />
+      <Parameter Name="R_CreateDate" Mode="In" Type="DateTime" />
+      <Parameter Name="R_ModifyDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdateRole">
+      <Parameter Name="R_id" Mode="In" Type="Int32" />
+      <Parameter Name="R_Name" Mode="In" Type="String" />
+      <Parameter Name="R_RoleTypeId" Mode="In" Type="Int32" />
+      <Parameter Name="R_EffectiveFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="R_isActive" Mode="In" Type="Boolean" />
       <Parameter Name="R_CreateDate" Mode="In" Type="DateTime" />
       <Parameter Name="R_ModifyDate" Mode="In" Type="DateTime" />
     </FunctionImport>
@@ -63,36 +73,31 @@
       <Parameter Name="R_CreateDate" Mode="In" Type="DateTime" />
       <Parameter Name="R_ModifyDate" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="DeleteRoleData">
-      <Parameter Name="R_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="GetRoleType" ReturnType="Collection(RolesManagementModel.GetRoleType_Result)" />
-    <FunctionImport Name="InsertRoleType">
-      <Parameter Name="R_Name" Mode="In" Type="String" />
-      <Parameter Name="R_isActive" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="UpdateRoleData">
       <Parameter Name="R_id" Mode="In" Type="Int32" />
       <Parameter Name="R_Name" Mode="In" Type="String" />
       <Parameter Name="R_isActive" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="InsertRoleTypeData">
-      <Parameter Name="R_Name" Mode="In" Type="String" />
-      <Parameter Name="R_isActive" Mode="In" Type="Int32" />
-    </FunctionImport>
   </EntityContainer>
-  <ComplexType Name="GetData_Result">
+  <ComplexType Name="spGetRole_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
     <Property Type="Int32" Name="RoleTypeId" Nullable="true" />
-    <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" />
-    <Property Type="Int32" Name="isActive" Nullable="true" />
-    <Property Type="DateTime" Name="CreateDate" Nullable="true" />
-    <Property Type="DateTime" Name="ModifyDate" Nullable="true" />
+    <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifyDate" Nullable="true" Precision="23" />
   </ComplexType>
-  <ComplexType Name="GetRoleType_Result">
+  <ComplexType Name="spGetRoles_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="RoleType" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="spGetRoleType_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="10" />
-    <Property Type="Int32" Name="isActive" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
   </ComplexType>
 </Schema>

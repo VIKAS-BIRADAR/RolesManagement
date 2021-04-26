@@ -10,6 +10,6 @@ namespace RoleManagement.Data.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public string isActive { get; set; }
+        public bool isActive { get; set; }
     }
 }

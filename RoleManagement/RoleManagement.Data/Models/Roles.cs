@@ -12,7 +12,7 @@ namespace RoleManagement.Data.Models
         public string Name { get; set; }
         public int RoleTypeId { get; set; }
         public DateTime EffectiveFrom { get; set; }
-        public int isActive { get; set; }
+        public bool isActive { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime ModifyDate { get; set; }
     }

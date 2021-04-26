@@ -10,18 +10,13 @@
 namespace RoleManagement.Data
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Role
+    public partial class spGetRoles_Result
     {
         public int id { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> RoleTypeId { get; set; }
+        public string RoleName { get; set; }
+        public string RoleType { get; set; }
         public Nullable<System.DateTime> EffectiveFrom { get; set; }
-        public Nullable<bool> isActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<System.DateTime> ModifyDate { get; set; }
-    
-        public virtual RoleType RoleType { get; set; }
     }
 }

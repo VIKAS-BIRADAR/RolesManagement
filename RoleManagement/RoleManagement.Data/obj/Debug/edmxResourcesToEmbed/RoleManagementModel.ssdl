@@ -5,23 +5,22 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
   <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="Name" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
     <Property Name="RoleTypeId" Type="int" />
-    <Property Name="EffectiveFrom" Type="date" />
-    <Property Name="isActive" Type="int" />
-    <Property Name="CreateDate" Type="date" />
-    <Property Name="ModifyDate" Type="date" />
+    <Property Name="EffectiveFrom" Type="datetime" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
   </EntityType>
   <EntityType Name="RoleType">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="isActive" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="isActive" Type="bit" />
   </EntityType>
   <Association Name="FK__Roles__RoleTypeI__29572725">
     <End Role="RoleType" Type="Self.RoleType" Multiplicity="0..1" />
@@ -35,25 +34,28 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="DeleteData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+  <Function Name="spDeleteRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="R_id" Type="int" Mode="In" />
   </Function>
-  <Function Name="DeleteRoleData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="R_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="GetData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="GetRoleType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="InsertData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="R_Name" Type="varchar" Mode="In" />
+  <Function Name="spGetRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spGetRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spGetRoleType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spInsertRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_Name" Type="nvarchar" Mode="In" />
     <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
-    <Parameter Name="R_EffectiveFrom" Type="date" Mode="In" />
-    <Parameter Name="R_isActive" Type="int" Mode="In" />
-    <Parameter Name="R_CreateDate" Type="date" Mode="In" />
-    <Parameter Name="R_ModifyDate" Type="date" Mode="In" />
+    <Parameter Name="R_EffectiveFrom" Type="datetime" Mode="In" />
+    <Parameter Name="R_isActive" Type="bit" Mode="In" />
+    <Parameter Name="R_CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="R_ModifyDate" Type="datetime" Mode="In" />
   </Function>
-  <Function Name="InsertRoleTypeData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="R_Name" Type="varchar" Mode="In" />
-    <Parameter Name="R_isActive" Type="int" Mode="In" />
+  <Function Name="spUpdateRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_id" Type="int" Mode="In" />
+    <Parameter Name="R_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
+    <Parameter Name="R_EffectiveFrom" Type="datetime" Mode="In" />
+    <Parameter Name="R_isActive" Type="bit" Mode="In" />
+    <Parameter Name="R_CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="R_ModifyDate" Type="datetime" Mode="In" />
   </Function>
   <Function Name="UpdateData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="R_id" Type="int" Mode="In" />

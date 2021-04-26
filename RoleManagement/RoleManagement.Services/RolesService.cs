@@ -23,7 +23,7 @@ namespace RoleManagement.Services.Services
 
                 if (Conn.State != System.Data.ConnectionState.Open) Conn.Open();
 
-                SqlCommand objCommand = new SqlCommand("GetData", Conn);
+                SqlCommand objCommand = new SqlCommand("spGetRole", Conn);
                 objCommand.CommandType = CommandType.StoredProcedure;
                 SqlDataReader _Reader = objCommand.ExecuteReader();
 
@@ -36,7 +36,7 @@ namespace RoleManagement.Services.Services
                     obj.Name = _Reader["Name"].ToString();
                     obj.RoleTypeId = Convert.ToInt32(_Reader["RoleTypeId"]);
                     obj.EffectiveFrom = Convert.ToDateTime(_Reader["EffectiveFrom"]);
-                    obj.isActive = Convert.ToInt32(_Reader["isActive"]);
+                    obj.isActive = Convert.ToBoolean(_Reader["isActive"]);
                     obj.CreateDate = Convert.ToDateTime(_Reader["CreateDate"]);
                     obj.ModifyDate = Convert.ToDateTime(_Reader["ModifyDate"]);
                     _listRoles.Add(obj);
@@ -74,7 +74,7 @@ namespace RoleManagement.Services.Services
             {
                 if (Conn.State != System.Data.ConnectionState.Open) Conn.Open();
 
-                SqlCommand objCommand = new SqlCommand("InsertData", Conn);
+                SqlCommand objCommand = new SqlCommand("spInsertRole", Conn);
                 objCommand.CommandType = CommandType.StoredProcedure;
                 objCommand.Parameters.AddWithValue("@R_Name", obj.Name);
                 objCommand.Parameters.AddWithValue("@R_RoleTypeId", obj.RoleTypeId);
@@ -122,7 +122,7 @@ namespace RoleManagement.Services.Services
             {
                 if (Conn.State != System.Data.ConnectionState.Open) Conn.Open();
 
-                SqlCommand objCommand = new SqlCommand("UpdateData", Conn);
+                SqlCommand objCommand = new SqlCommand("spUpdateRole", Conn);
                 objCommand.CommandType = CommandType.StoredProcedure;
                 objCommand.Parameters.AddWithValue("@R_id", obj.id);
                 objCommand.Parameters.AddWithValue("@R_Name", obj.Name);
@@ -171,7 +171,7 @@ namespace RoleManagement.Services.Services
             {
                 if (Conn.State != System.Data.ConnectionState.Open) Conn.Open();
 
-                SqlCommand objCommand = new SqlCommand("DeleteData", Conn);
+                SqlCommand objCommand = new SqlCommand("spDeleteRole", Conn);
                 objCommand.CommandType = CommandType.StoredProcedure;
                 objCommand.Parameters.AddWithValue("@R_id", id);
                 result = Convert.ToInt32(objCommand.ExecuteScalar());

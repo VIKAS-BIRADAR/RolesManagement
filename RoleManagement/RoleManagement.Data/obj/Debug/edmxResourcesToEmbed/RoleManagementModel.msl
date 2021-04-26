@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="RolesManagementModelStoreContainer" CdmEntityContainer="RolesManagementEntities">
+  <EntityContainerMapping StorageEntityContainer="RolesManagementModelStoreContainer" CdmEntityContainer="RolesManagementEntities1">
     <EntitySetMapping Name="RoleTypes">
       <EntityTypeMapping TypeName="RolesManagementModel.RoleType">
         <MappingFragment StoreEntitySet="RoleType">
@@ -23,10 +23,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="DeleteData" FunctionName="RolesManagementModel.Store.DeleteData" />
-    <FunctionImportMapping FunctionImportName="GetData" FunctionName="RolesManagementModel.Store.GetData">
+    <FunctionImportMapping FunctionImportName="spDeleteRole" FunctionName="RolesManagementModel.Store.spDeleteRole" />
+    <FunctionImportMapping FunctionImportName="spGetRole" FunctionName="RolesManagementModel.Store.spGetRole">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="RolesManagementModel.GetData_Result">
+        <ComplexTypeMapping TypeName="RolesManagementModel.spGetRole_Result">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="RoleTypeId" ColumnName="RoleTypeId" />
@@ -37,19 +37,29 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="InsertData" FunctionName="RolesManagementModel.Store.InsertData" />
-    <FunctionImportMapping FunctionImportName="UpdateData" FunctionName="RolesManagementModel.Store.UpdateData" />
-    <FunctionImportMapping FunctionImportName="DeleteRoleData" FunctionName="RolesManagementModel.Store.DeleteRoleData" />
-    <FunctionImportMapping FunctionImportName="GetRoleType" FunctionName="RolesManagementModel.Store.GetRoleType">
+    <FunctionImportMapping FunctionImportName="spGetRoles" FunctionName="RolesManagementModel.Store.spGetRoles">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="RolesManagementModel.GetRoleType_Result">
+        <ComplexTypeMapping TypeName="RolesManagementModel.spGetRoles_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleType" ColumnName="RoleType" />
+          <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetRoleType" FunctionName="RolesManagementModel.Store.spGetRoleType">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RolesManagementModel.spGetRoleType_Result">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="isActive" ColumnName="isActive" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spInsertRole" FunctionName="RolesManagementModel.Store.spInsertRole" />
+    <FunctionImportMapping FunctionImportName="spUpdateRole" FunctionName="RolesManagementModel.Store.spUpdateRole" />
+    <FunctionImportMapping FunctionImportName="UpdateData" FunctionName="RolesManagementModel.Store.UpdateData" />
     <FunctionImportMapping FunctionImportName="UpdateRoleData" FunctionName="RolesManagementModel.Store.UpdateRoleData" />
-    <FunctionImportMapping FunctionImportName="InsertRoleTypeData" FunctionName="RolesManagementModel.Store.InsertRoleTypeData" />
   </EntityContainerMapping>
 </Mapping>

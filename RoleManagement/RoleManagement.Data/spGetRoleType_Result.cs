@@ -11,10 +11,10 @@ namespace RoleManagement.Data
 {
     using System;
     
-    public partial class GetRoleType_Result
+    public partial class spGetRoleType_Result
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public Nullable<int> isActive { get; set; }
+        public Nullable<bool> isActive { get; set; }
     }
 }

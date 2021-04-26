@@ -28,55 +28,7 @@ namespace RoleManagement.API.Controllers
                 throw ex;
             }
         }
-        [HttpPost]
-        [ResponseType(typeof(RoleType))]
-        public string Post(RoleType obj)
-        {
-            try
-            {
-                RoleTypeService obj1 = new RoleTypeService();
-                Int32 message = 0;
-
-                if ((obj.Name != null) ) message = obj1.InsertRole(obj);
-                else message = -1;
-                return message.ToString();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        [HttpPut]
-        [ResponseType(typeof(RoleType))]
-        public string Edit(RoleType obj)
-        {
-            try
-            {
-                RoleTypeService obj1 = new RoleTypeService();
-                Int32 message = 0;
-                message = obj1.UpdateRoleType(obj);
-                return message.ToString();
-
-            }
-            catch
-            {
-                throw;
-            }
-        }
-        [HttpDelete]
-        public string Delete(int id)
-        {
-            try
-            {
-                RoleTypeService obj = new RoleTypeService();
-                Int32 message = 0;
-                message = obj.DeleteRoleType(id);
-                return message.ToString();
-            }
-            catch
-            {
-                throw;
-            }
-        }
+     
+       
     }
 }
