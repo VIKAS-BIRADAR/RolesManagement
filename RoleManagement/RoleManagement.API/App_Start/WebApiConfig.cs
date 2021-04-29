@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Web.Http.Cors;
 
 namespace RoleManagement.API
 {
@@ -12,6 +13,8 @@ namespace RoleManagement.API
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            var corsAttr = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(corsAttr);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

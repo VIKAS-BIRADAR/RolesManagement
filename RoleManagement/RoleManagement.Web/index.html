@@ -1,0 +1,234 @@
+﻿<html>
+<head>
+    <TITLE>AngularJS</TITLE>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <!--Controller-->
+    <script type="text/javascript" src="/Scripts/app.js"></script>
+    <!--Pagination-->
+    <script type="text/javascript" src="Scripts/dirPagination.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myController">
+    <div class="container">
+        <div class="row">
+            <hr>
+            <div class="col-md-8">
+                <strong>Roles</strong>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add">Add Roles</button>
+            </div>
+            <span class="clearfix"></span>
+            <hr>
+        </div>
+        <div class="alert alert-info" ng-if="message">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            1 Row Affected !
+        </div>
+        <div class="table-data">
+            <b>Search</b> <input type="text" id="txtsearch" ng-model="searchWord" placeholder="search" />
+        </div>
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Role Name</th>
+                        <th>Role Type</th>
+                        <th>Effective From</th>
+                        <th>Create Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr dir-paginate="user in Roles | filter:searchWord | itemsPerPage:10 |orderBy:order:reverse">
+                        <td>{{user.id}}</td>
+                        <td>{{user.RoleName}}</td>
+                        <td>{{user.RoleType}}</td>
+                        <td>{{user.EffectiveFrom}}</td>
+                        <td>{{user.CreateDate}}</td>
+
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit" ng-click="">Edit</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete" ng-click="">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <!-- Add Roles Modal -->
+    <div class="modal fade" id="add" role="dialog">
+        <div class="modal-dialog modal-md">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">ADD ROLE</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="myForm" class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="crname">Role Name</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="crname" id="rolename" placeholder="Enter role name" ng-model="Role.Rolename" ng-maxlength="8" required>
+                                <span style="color:red;" ng-show="myForm.crname.$error.required">Role name Required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="rtype">Role Type:</label>
+                            <div class="col-sm-7">
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Choose RoleType
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Partner</a></li>
+                                        <li><a href="#">Customer</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="EDATE">Effective From:</label>
+                            <div class="col-sm-7">
+                                <input type="datetime-local" id="EDATE">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="CDATE">Create Date:</label>
+                            <div class="col-sm-7">
+                                <input type="datetime-local" id="CDATE">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-info" ng-click="saveUser()" data-dismiss="modal">Save</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div class="modal fade" id="edit" role="dialog">
+        <div class="modal-dialog modal-md">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">EDIT ROLE</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="Eform" class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="name">Role Name</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="crname" id="rolename" placeholder="Enter role name" ng-model="" ng-maxlength="8" required>
+                                <span style="color:red;" ng-show="myForm.crname.$error.required">Role name Required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="rtype">Role Type:</label>
+                            <div class="col-sm-7">
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Choose RoleType
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Partner</a></li>
+                                        <li><a href="#">Customer</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="EDATE">Effective From:</label>
+                            <div class="col-sm-7">
+                                <input type="datetime-local" id="EDATE">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="email">Modify Date:</label>
+                            <div class="col-sm-7">
+                                <input type="datetime-local" id="MDATE">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-info" ng-click="updateUser()" data-dismiss="modal">Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Delete Role -->
+    <div class="modal fade" id="delete" role="dialog">
+        <div class="modal-dialog modal-md">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">DELETE ROLE</h4>
+                </div>
+                <div class="modal-body">
+                    <span>Do You Want To Delete This Role Permanently ?</span><br>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
+<footer>
+    <center> <dir-pagination-controls></dir-pagination-controls></center>
+</footer>

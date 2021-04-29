@@ -19,13 +19,13 @@ namespace RoleManagement.API.Controllers
     {
         [HttpGet]
 
-        public IEnumerable<Roles> Get()
+        public IEnumerable<GetRoles> Get()
         {
             try
             {
 
                 RolesService obj = new RolesService();
-                List<Roles> modelRoles = obj.GetRoleDetails();
+                List<GetRoles> modelRoles = obj.GetRoleDetails();
                 return modelRoles;
             }
             catch (Exception ex)

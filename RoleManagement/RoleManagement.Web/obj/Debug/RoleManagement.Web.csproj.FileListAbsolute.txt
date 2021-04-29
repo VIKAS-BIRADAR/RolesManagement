@@ -52,8 +52,8 @@ D:\RoleManagement\RoleManagement\RoleManagement.Web\bin\roslyn\VBCSCompiler.exe
 D:\RoleManagement\RoleManagement\RoleManagement.Web\bin\roslyn\VBCSCompiler.exe.config
 D:\RoleManagement\RoleManagement\RoleManagement.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\RoleManagement\RoleManagement\RoleManagement.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\RoleManagement\RoleManagement\RoleManagement.Web\obj\Debug\RoleManagement.Web.csprojAssemblyReference.cache
 D:\RoleManagement\RoleManagement\RoleManagement.Web\obj\Debug\RoleManagement.Web.csproj.CoreCompileInputs.cache
 D:\RoleManagement\RoleManagement\RoleManagement.Web\obj\Debug\RoleManagement.Web.csproj.CopyComplete
 D:\RoleManagement\RoleManagement\RoleManagement.Web\obj\Debug\RoleManagement.Web.dll
 D:\RoleManagement\RoleManagement\RoleManagement.Web\obj\Debug\RoleManagement.Web.pdb
+D:\RoleManagement\RoleManagement\RoleManagement.Web\obj\Debug\RoleManagement.Web.csprojAssemblyReference.cache

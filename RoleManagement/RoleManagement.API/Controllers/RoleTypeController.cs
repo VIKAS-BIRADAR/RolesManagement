@@ -28,7 +28,7 @@ namespace RoleManagement.API.Controllers
                 throw ex;
             }
         }
-     
-       
+
+
     }
 }

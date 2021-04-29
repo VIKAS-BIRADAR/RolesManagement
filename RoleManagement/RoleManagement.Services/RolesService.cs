@@ -11,7 +11,7 @@ namespace RoleManagement.Services.Services
 {
     public class RolesService
     {
-        public List<Roles> GetRoleDetails()
+        public List<GetRoles> GetRoleDetails()
         {
             dbConnector objConn = new dbConnector();
             SqlConnection Conn = objConn.GetConnection;
@@ -19,11 +19,11 @@ namespace RoleManagement.Services.Services
 
             try
             {
-                List<Roles> _listRoles = new List<Roles>();
+                List<GetRoles> _listGetRoles = new List<GetRoles>();
 
                 if (Conn.State != System.Data.ConnectionState.Open) Conn.Open();
 
-                SqlCommand objCommand = new SqlCommand("spGetRole", Conn);
+                SqlCommand objCommand = new SqlCommand("spGetRolesData", Conn);
                 objCommand.CommandType = CommandType.StoredProcedure;
                 SqlDataReader _Reader = objCommand.ExecuteReader();
 
@@ -31,20 +31,19 @@ namespace RoleManagement.Services.Services
 
                 while (_Reader.Read())
                 {
-                    Roles obj = new Roles();
+                    GetRoles obj = new GetRoles();
                     obj.id = Convert.ToInt32(_Reader["id"]);
-                    obj.Name = _Reader["Name"].ToString();
-                    obj.RoleTypeId = Convert.ToInt32(_Reader["RoleTypeId"]);
+                    obj.RoleName = _Reader["RoleName"].ToString();
+                    obj.RoleType = _Reader["RoleType"].ToString();
                     obj.EffectiveFrom = Convert.ToDateTime(_Reader["EffectiveFrom"]);
-                    obj.isActive = Convert.ToBoolean(_Reader["isActive"]);
                     obj.CreateDate = Convert.ToDateTime(_Reader["CreateDate"]);
-                    obj.ModifyDate = Convert.ToDateTime(_Reader["ModifyDate"]);
-                    _listRoles.Add(obj);
+
+                    _listGetRoles.Add(obj);
 
 
                 }
 
-                return _listRoles;
+                return _listGetRoles;
             }
             catch
             {
