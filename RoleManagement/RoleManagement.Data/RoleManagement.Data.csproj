@@ -78,6 +78,12 @@
     <Compile Include="RoleType.cs">
       <DependentUpon>RoleManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="spGetRole1_Result.cs">
+      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spGetRolesData_Result.cs">
+      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="spGetRoles_Result.cs">
       <DependentUpon>RoleManagementModel.tt</DependentUpon>
     </Compile>

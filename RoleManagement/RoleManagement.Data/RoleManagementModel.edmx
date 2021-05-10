@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RolesManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RolesManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Roles">
@@ -43,38 +43,12 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
           <Parameter Name="R_id" Type="int" Mode="In" />
         </Function>
         <Function Name="spGetRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="spGetRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetRoleType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="spInsertRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="R_Name" Type="nvarchar" Mode="In" />
-          <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
-          <Parameter Name="R_EffectiveFrom" Type="datetime" Mode="In" />
-          <Parameter Name="R_isActive" Type="bit" Mode="In" />
-          <Parameter Name="R_CreateDate" Type="datetime" Mode="In" />
-          <Parameter Name="R_ModifyDate" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="spUpdateRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="spSaveRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="R_id" Type="int" Mode="In" />
           <Parameter Name="R_Name" Type="nvarchar" Mode="In" />
           <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
           <Parameter Name="R_EffectiveFrom" Type="datetime" Mode="In" />
-          <Parameter Name="R_isActive" Type="bit" Mode="In" />
-          <Parameter Name="R_CreateDate" Type="datetime" Mode="In" />
-          <Parameter Name="R_ModifyDate" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="UpdateData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="R_id" Type="int" Mode="In" />
-          <Parameter Name="R_Name" Type="varchar" Mode="In" />
-          <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
-          <Parameter Name="R_EffectiveFrom" Type="date" Mode="In" />
-          <Parameter Name="R_isActive" Type="int" Mode="In" />
-          <Parameter Name="R_CreateDate" Type="date" Mode="In" />
-          <Parameter Name="R_ModifyDate" Type="date" Mode="In" />
-        </Function>
-        <Function Name="UpdateRoleData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="R_id" Type="int" Mode="In" />
-          <Parameter Name="R_Name" Type="varchar" Mode="In" />
-          <Parameter Name="R_isActive" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="RolesManagementModelStoreContainer">
           <EntitySet Name="RoleType" EntityType="Self.RoleType" Schema="dbo" store:Type="Tables" />
@@ -94,8 +68,7 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
             <End Role="Roles" EntitySet="Roles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RolesManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -141,7 +114,7 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
             <End Role="Roles" EntitySet="Roles" />
           </AssociationSet>
           <FunctionImport Name="spDeleteRole">
-            <Parameter Name="R_id" Mode="In" Type="Int32" />
+          <Parameter Name="R_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetRole" ReturnType="Collection(RolesManagementModel.spGetRole_Result)" />
           <FunctionImport Name="spGetRoles" ReturnType="Collection(RolesManagementModel.spGetRoles_Result)" />
@@ -177,6 +150,14 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
             <Parameter Name="R_Name" Mode="In" Type="String" />
             <Parameter Name="R_isActive" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="spSaveRole">
+            <Parameter Name="R_id" Mode="In" Type="Int32" />
+            <Parameter Name="R_Name" Mode="In" Type="String" />
+            <Parameter Name="R_RoleTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="R_EffectiveFrom" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spGetRolesData" ReturnType="Collection(RolesManagementModel.spGetRolesData_Result)" />
+          <FunctionImport Name="spGetRole1" ReturnType="Collection(RolesManagementModel.spGetRole1_Result)" />
         </EntityContainer>
         <ComplexType Name="spGetRole_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -198,6 +179,22 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="isActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetRolesData_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="RoleName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="RoleTypeId" Nullable="false" />
+          <Property Type="String" Name="RoleType" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetRole1_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="RoleName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="RoleTypeId" Nullable="false" />
+          <Property Type="String" Name="RoleType" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -228,30 +225,6 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="spDeleteRole" FunctionName="RolesManagementModel.Store.spDeleteRole" />
-          <FunctionImportMapping FunctionImportName="spGetRole" FunctionName="RolesManagementModel.Store.spGetRole">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="RolesManagementModel.spGetRole_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="RoleTypeId" ColumnName="RoleTypeId" />
-                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetRoles" FunctionName="RolesManagementModel.Store.spGetRoles">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="RolesManagementModel.spGetRoles_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="RoleType" ColumnName="RoleType" />
-                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spGetRoleType" FunctionName="RolesManagementModel.Store.spGetRoleType">
             <ResultMapping>
               <ComplexTypeMapping TypeName="RolesManagementModel.spGetRoleType_Result">
@@ -261,10 +234,19 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spInsertRole" FunctionName="RolesManagementModel.Store.spInsertRole" />
-          <FunctionImportMapping FunctionImportName="spUpdateRole" FunctionName="RolesManagementModel.Store.spUpdateRole" />
-          <FunctionImportMapping FunctionImportName="UpdateData" FunctionName="RolesManagementModel.Store.UpdateData" />
-          <FunctionImportMapping FunctionImportName="UpdateRoleData" FunctionName="RolesManagementModel.Store.UpdateRoleData" />
+          <FunctionImportMapping FunctionImportName="spSaveRole" FunctionName="RolesManagementModel.Store.spSaveRole" />
+          <FunctionImportMapping FunctionImportName="spGetRole1" FunctionName="RolesManagementModel.Store.spGetRole">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RolesManagementModel.spGetRole1_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleTypeId" ColumnName="RoleTypeId" />
+                <ScalarProperty Name="RoleType" ColumnName="RoleType" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

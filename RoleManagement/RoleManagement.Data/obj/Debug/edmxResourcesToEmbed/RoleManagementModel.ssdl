@@ -38,38 +38,12 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
     <Parameter Name="R_id" Type="int" Mode="In" />
   </Function>
   <Function Name="spGetRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="spGetRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="spGetRoleType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="spInsertRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="R_Name" Type="nvarchar" Mode="In" />
-    <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
-    <Parameter Name="R_EffectiveFrom" Type="datetime" Mode="In" />
-    <Parameter Name="R_isActive" Type="bit" Mode="In" />
-    <Parameter Name="R_CreateDate" Type="datetime" Mode="In" />
-    <Parameter Name="R_ModifyDate" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="spUpdateRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+  <Function Name="spSaveRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="R_id" Type="int" Mode="In" />
     <Parameter Name="R_Name" Type="nvarchar" Mode="In" />
     <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
     <Parameter Name="R_EffectiveFrom" Type="datetime" Mode="In" />
-    <Parameter Name="R_isActive" Type="bit" Mode="In" />
-    <Parameter Name="R_CreateDate" Type="datetime" Mode="In" />
-    <Parameter Name="R_ModifyDate" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="UpdateData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="R_id" Type="int" Mode="In" />
-    <Parameter Name="R_Name" Type="varchar" Mode="In" />
-    <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
-    <Parameter Name="R_EffectiveFrom" Type="date" Mode="In" />
-    <Parameter Name="R_isActive" Type="int" Mode="In" />
-    <Parameter Name="R_CreateDate" Type="date" Mode="In" />
-    <Parameter Name="R_ModifyDate" Type="date" Mode="In" />
-  </Function>
-  <Function Name="UpdateRoleData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="R_id" Type="int" Mode="In" />
-    <Parameter Name="R_Name" Type="varchar" Mode="In" />
-    <Parameter Name="R_isActive" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="RolesManagementModelStoreContainer">
     <EntitySet Name="RoleType" EntityType="Self.RoleType" Schema="dbo" store:Type="Tables" />

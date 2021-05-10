@@ -165,5 +165,36 @@ namespace RoleManagement.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateRoleData", r_idParameter, r_NameParameter, r_isActiveParameter);
         }
+    
+        public virtual int spSaveRole(Nullable<int> r_id, string r_Name, Nullable<int> r_RoleTypeId, Nullable<System.DateTime> r_EffectiveFrom)
+        {
+            var r_idParameter = r_id.HasValue ?
+                new ObjectParameter("R_id", r_id) :
+                new ObjectParameter("R_id", typeof(int));
+    
+            var r_NameParameter = r_Name != null ?
+                new ObjectParameter("R_Name", r_Name) :
+                new ObjectParameter("R_Name", typeof(string));
+    
+            var r_RoleTypeIdParameter = r_RoleTypeId.HasValue ?
+                new ObjectParameter("R_RoleTypeId", r_RoleTypeId) :
+                new ObjectParameter("R_RoleTypeId", typeof(int));
+    
+            var r_EffectiveFromParameter = r_EffectiveFrom.HasValue ?
+                new ObjectParameter("R_EffectiveFrom", r_EffectiveFrom) :
+                new ObjectParameter("R_EffectiveFrom", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSaveRole", r_idParameter, r_NameParameter, r_RoleTypeIdParameter, r_EffectiveFromParameter);
+        }
+    
+        public virtual ObjectResult<spGetRolesData_Result> spGetRolesData()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetRolesData_Result>("spGetRolesData");
+        }
+    
+        public virtual ObjectResult<spGetRole1_Result> spGetRole1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetRole1_Result>("spGetRole1");
+        }
     }
 }

@@ -1,7 +1,5 @@
- Create Procedure spGetRoleType
+Create Procedure spGetRoleType
  As
 BEGIN
       select * from RoleType
 END
-
-exec spGetRoleType

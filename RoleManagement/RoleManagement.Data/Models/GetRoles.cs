@@ -10,6 +10,7 @@ namespace RoleManagement.Data.Models
     {
         public int id { get; set; }
         public string RoleName { get; set; }
+        public int RoleTypeId { get; set; }
         public string RoleType { get; set; }
         public DateTime EffectiveFrom { get; set; }
         public DateTime CreateDate { get; set; }

@@ -14,14 +14,14 @@ namespace RoleManagement.API.Controllers
     {
         [HttpGet]
 
-        public IEnumerable<RoleType> Get()
+        public IEnumerable<RoleType> GetRoleType()
         {
             try
             {
 
                 RoleTypeService obj = new RoleTypeService();
-                List<RoleType> modelRoles = obj.GetRoleTypeData();
-                return modelRoles;
+                List<RoleType> modelRoleType = obj.GetRoleTypeData();
+                return modelRoleType;
             }
             catch (Exception ex)
             {

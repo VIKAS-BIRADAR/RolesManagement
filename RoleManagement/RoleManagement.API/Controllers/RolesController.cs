@@ -35,15 +35,15 @@ namespace RoleManagement.API.Controllers
         }
 
         [HttpPost]
-        [ResponseType(typeof(Roles))]
-        public string Post(Roles obj)
+        [ResponseType(typeof(GetRoles))]
+        public string Post(GetRoles obj)
         {
             try
             {
                 RolesService obj1 = new RolesService();
                 Int32 message = 0;
 
-                if ((obj.Name != null) && (obj.EffectiveFrom != null)) message = obj1.InsertRole(obj);
+                if ((obj.RoleName != null) && (obj.EffectiveFrom != null)) message = obj1.InsertUpdateRole(obj);
                 else message = -1;
                 return message.ToString();
             }
@@ -52,25 +52,9 @@ namespace RoleManagement.API.Controllers
                 throw e;
             }
         }
-        [HttpPut]
-        [ResponseType(typeof(Roles))]
-        public string Edit(Roles obj)
-        {
-            try
-            {
-                RolesService obj1 = new RolesService();
-                Int32 message = 0;
-                message = obj1.UpdateRoles(obj);
-                return message.ToString();
-
-            }
-            catch
-            {
-                throw;
-            }
-        }
         [HttpDelete]
         public string Delete(int id)
+
         {
             try
             {

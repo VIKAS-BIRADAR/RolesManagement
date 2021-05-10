@@ -78,6 +78,14 @@
       <Parameter Name="R_Name" Mode="In" Type="String" />
       <Parameter Name="R_isActive" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="spSaveRole">
+      <Parameter Name="R_id" Mode="In" Type="Int32" />
+      <Parameter Name="R_Name" Mode="In" Type="String" />
+      <Parameter Name="R_RoleTypeId" Mode="In" Type="Int32" />
+      <Parameter Name="R_EffectiveFrom" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spGetRolesData" ReturnType="Collection(RolesManagementModel.spGetRolesData_Result)" />
+    <FunctionImport Name="spGetRole1" ReturnType="Collection(RolesManagementModel.spGetRole1_Result)" />
   </EntityContainer>
   <ComplexType Name="spGetRole_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -99,5 +107,21 @@
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
     <Property Type="Boolean" Name="isActive" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spGetRolesData_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="RoleTypeId" Nullable="false" />
+    <Property Type="String" Name="RoleType" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="spGetRole1_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="RoleTypeId" Nullable="false" />
+    <Property Type="String" Name="RoleType" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
   </ComplexType>
 </Schema>
