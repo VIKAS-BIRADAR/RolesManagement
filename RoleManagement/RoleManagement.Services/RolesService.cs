@@ -1,4 +1,5 @@
 ﻿using RoleManagement.Data.Models;
+using RoleManagement.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,8 +10,9 @@ using System.Threading.Tasks;
 
 namespace RoleManagement.Services.Services
 {
-    public class RolesService
+    public class RolesService : IRolesService
     {
+       
         public List<GetRoles> GetRoleDetails()
         {
             dbConnector objConn = new dbConnector();

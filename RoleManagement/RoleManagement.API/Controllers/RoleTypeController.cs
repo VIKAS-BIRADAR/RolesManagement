@@ -13,7 +13,6 @@ namespace RoleManagement.API.Controllers
     public class RoleTypeController : ApiController
     {
         [HttpGet]
-
         public IEnumerable<RoleType> GetRoleType()
         {
             try

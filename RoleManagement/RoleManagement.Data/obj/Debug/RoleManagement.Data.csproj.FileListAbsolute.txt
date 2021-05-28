@@ -9,4 +9,3 @@ D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\EntityFramework.S
 D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\EntityFramework.xml
 D:\RoleManagement\RoleManagement\RoleManagement.Data\bin\Debug\EntityFramework.SqlServer.xml
 D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\RoleManagement.Data.csproj.CopyComplete
-D:\RoleManagement\RoleManagement\RoleManagement.Data\obj\Debug\RoleManagement.Data.csprojAssemblyReference.cache

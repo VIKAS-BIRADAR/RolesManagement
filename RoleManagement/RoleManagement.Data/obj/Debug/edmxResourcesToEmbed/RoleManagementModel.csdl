@@ -86,6 +86,11 @@
     </FunctionImport>
     <FunctionImport Name="spGetRolesData" ReturnType="Collection(RolesManagementModel.spGetRolesData_Result)" />
     <FunctionImport Name="spGetRole1" ReturnType="Collection(RolesManagementModel.spGetRole1_Result)" />
+    <EntitySet Name="Logins" EntityType="RolesManagementModel.Login" />
+    <FunctionImport Name="spValidateUser" ReturnType="Collection(String)">
+      <Parameter Name="R_Username" Mode="In" Type="String" />
+      <Parameter Name="R_Password" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="spGetRole_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -124,4 +129,14 @@
     <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
     <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
   </ComplexType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

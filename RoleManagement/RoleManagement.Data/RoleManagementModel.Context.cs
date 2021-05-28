@@ -29,6 +29,7 @@ namespace RoleManagement.Data
     
         public virtual DbSet<RoleType> RoleTypes { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Login> Logins { get; set; }
     
         public virtual int spDeleteRole(Nullable<int> r_id)
         {
@@ -195,6 +196,19 @@ namespace RoleManagement.Data
         public virtual ObjectResult<spGetRole1_Result> spGetRole1()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetRole1_Result>("spGetRole1");
+        }
+    
+        public virtual ObjectResult<string> spValidateUser(string r_Username, string r_Password)
+        {
+            var r_UsernameParameter = r_Username != null ?
+                new ObjectParameter("R_Username", r_Username) :
+                new ObjectParameter("R_Username", typeof(string));
+    
+            var r_PasswordParameter = r_Password != null ?
+                new ObjectParameter("R_Password", r_Password) :
+                new ObjectParameter("R_Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spValidateUser", r_UsernameParameter, r_PasswordParameter);
         }
     }
 }

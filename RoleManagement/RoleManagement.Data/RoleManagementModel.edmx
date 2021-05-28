@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="RolesManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="30" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+          <Property Name="Username" Type="nvarchar" MaxLength="10" />
+          <Property Name="Password" Type="nvarchar" MaxLength="10" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Roles">
@@ -50,7 +60,12 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
           <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
           <Parameter Name="R_EffectiveFrom" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="spValidateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="R_Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="R_Password" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="RolesManagementModelStoreContainer">
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleType" EntityType="Self.RoleType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -158,6 +173,11 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
           </FunctionImport>
           <FunctionImport Name="spGetRolesData" ReturnType="Collection(RolesManagementModel.spGetRolesData_Result)" />
           <FunctionImport Name="spGetRole1" ReturnType="Collection(RolesManagementModel.spGetRole1_Result)" />
+          <EntitySet Name="Logins" EntityType="RolesManagementModel.Login" />
+          <FunctionImport Name="spValidateUser" ReturnType="Collection(String)">
+            <Parameter Name="R_Username" Mode="In" Type="String" />
+            <Parameter Name="R_Password" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spGetRole_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -196,6 +216,16 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
           <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
         </ComplexType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -247,6 +277,18 @@ warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="RolesManagementModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spValidateUser" FunctionName="RolesManagementModel.Store.spValidateUser" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

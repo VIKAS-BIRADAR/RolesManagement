@@ -1,5 +1,4 @@
 ﻿using RoleManagement.Data;
-using RoleManagement.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,39 +9,34 @@ using System.Threading.Tasks;
 
 namespace RoleManagement.Services
 {
-   
-    public class RoleTypeService : IRoleTypeService
+    public class LoginService
     {
-        public List<RoleType> GetRoleTypeData()
+        public Int32 ValidateLogin(Login obj)
         {
             dbConnector objConn = new dbConnector();
             SqlConnection Conn = objConn.GetConnection;
             Conn.Open();
 
+            int result = '0';
+
             try
             {
-                List<RoleType> _listRoleType = new List<RoleType>();
-
                 if (Conn.State != System.Data.ConnectionState.Open) Conn.Open();
 
-                SqlCommand objCommand = new SqlCommand("spGetRoleType", Conn);
+                SqlCommand objCommand = new SqlCommand("spValidateUser", Conn);
                 objCommand.CommandType = CommandType.StoredProcedure;
-                SqlDataReader _Reader = objCommand.ExecuteReader();
+                objCommand.Parameters.AddWithValue("@R_Username", obj.Username);
+                objCommand.Parameters.AddWithValue("@R_Password", obj.Password);
+                result = Convert.ToInt32(objCommand.ExecuteScalar());
 
-
-
-                while (_Reader.Read())
+                if (result > 0)
                 {
-                    RoleType obj = new RoleType();
-                    obj.ID = Convert.ToInt32(_Reader["ID"]);
-                    obj.Name = _Reader["Name"].ToString();
-                    obj.isActive = Convert.ToBoolean(_Reader["isActive"]);
-                    _listRoleType.Add(obj);
-
-
+                    return result;
                 }
-
-                return _listRoleType;
+                else
+                {
+                    return 0;
+                }
             }
             catch
             {
@@ -60,8 +54,5 @@ namespace RoleManagement.Services
                 }
             }
         }
-
-
     }
 }
-

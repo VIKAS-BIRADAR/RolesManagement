@@ -1,0 +1,20 @@
+﻿body {
+}
+body {
+    background-image: url("undraw_Login_re_4vu2.svg");
+    background-repeat: no-repeat;
+    background-position: left 5px top 45px;
+    
+}
+.container {
+    max-width: 400px;
+    margin: 60px auto 0;
+    margin-top:250px;
+    margin-left:1000px;
+}
+
+.error {
+    color: tomato;
+    font-size: 12px;
+    padding-top: 4px
+}

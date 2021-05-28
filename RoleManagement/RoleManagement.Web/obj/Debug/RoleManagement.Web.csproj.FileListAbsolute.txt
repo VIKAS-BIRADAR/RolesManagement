@@ -56,4 +56,3 @@ D:\RoleManagement\RoleManagement\RoleManagement.Web\obj\Debug\RoleManagement.Web
 D:\RoleManagement\RoleManagement\RoleManagement.Web\obj\Debug\RoleManagement.Web.csproj.CopyComplete
 D:\RoleManagement\RoleManagement\RoleManagement.Web\obj\Debug\RoleManagement.Web.dll
 D:\RoleManagement\RoleManagement\RoleManagement.Web\obj\Debug\RoleManagement.Web.pdb
-D:\RoleManagement\RoleManagement\RoleManagement.Web\obj\Debug\RoleManagement.Web.csprojAssemblyReference.cache
