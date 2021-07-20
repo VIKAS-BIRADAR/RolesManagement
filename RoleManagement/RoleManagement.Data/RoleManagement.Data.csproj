@@ -53,74 +53,84 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetData_Result.cs">
+      <DependentUpon>RolesManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetRoleType_Result.cs">
+      <DependentUpon>RolesManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Log.cs">
+      <DependentUpon>RolesManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
-      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+      <DependentUpon>RolesManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetRoles.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\RoleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs">
-      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+      <DependentUpon>RolesManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="RoleManagementModel.Context.cs">
+    <Compile Include="RolesManagement.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RoleManagementModel.Context.tt</DependentUpon>
+      <DependentUpon>RolesManagement.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="RoleManagementModel.cs">
+    <Compile Include="RolesManagement.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+      <DependentUpon>RolesManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="RoleManagementModel.Designer.cs">
+    <Compile Include="RolesManagement.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RoleManagementModel.edmx</DependentUpon>
+      <DependentUpon>RolesManagement.edmx</DependentUpon>
     </Compile>
     <Compile Include="RoleType.cs">
-      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+      <DependentUpon>RolesManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="spGetRole1_Result.cs">
-      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+    <Compile Include="spGetLogin_Result.cs">
+      <DependentUpon>RolesManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="spGetRolesData_Result.cs">
-      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+      <DependentUpon>RolesManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="spGetRoles_Result.cs">
-      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+      <DependentUpon>RolesManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="spGetRoleType_Result.cs">
-      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+      <DependentUpon>RolesManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="spGetRole_Result.cs">
-      <DependentUpon>RoleManagementModel.tt</DependentUpon>
+      <DependentUpon>RolesManagement.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="RoleManagementModel.edmx">
+    <EntityDeploy Include="RolesManagement.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RoleManagementModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>RolesManagement.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="RoleManagementModel.edmx.diagram">
-      <DependentUpon>RoleManagementModel.edmx</DependentUpon>
+    <None Include="RolesManagement.edmx.diagram">
+      <DependentUpon>RolesManagement.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RoleManagementModel.Context.tt">
+    <Content Include="RolesManagement.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RoleManagementModel.edmx</DependentUpon>
-      <LastGenOutput>RoleManagementModel.Context.cs</LastGenOutput>
+      <DependentUpon>RolesManagement.edmx</DependentUpon>
+      <LastGenOutput>RolesManagement.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="RoleManagementModel.tt">
+    <Content Include="RolesManagement.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RoleManagementModel.edmx</DependentUpon>
-      <LastGenOutput>RoleManagementModel.cs</LastGenOutput>
+      <DependentUpon>RolesManagement.edmx</DependentUpon>
+      <LastGenOutput>RolesManagement.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

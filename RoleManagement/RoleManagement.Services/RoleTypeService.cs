@@ -7,12 +7,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
 
 namespace RoleManagement.Services
 {
    
     public class RoleTypeService : IRoleTypeService
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(RoleTypeService));
         public List<RoleType> GetRoleTypeData()
         {
             dbConnector objConn = new dbConnector();
@@ -21,6 +23,7 @@ namespace RoleManagement.Services
 
             try
             {
+                Logger.Debug("able to retreive the roletypeservice from database");
                 List<RoleType> _listRoleType = new List<RoleType>();
 
                 if (Conn.State != System.Data.ConnectionState.Open) Conn.Open();
@@ -38,6 +41,7 @@ namespace RoleManagement.Services
                     obj.Name = _Reader["Name"].ToString();
                     obj.isActive = Convert.ToBoolean(_Reader["isActive"]);
                     _listRoleType.Add(obj);
+                    Logger.Info("Successfully able  to retreive data from database");
 
 
                 }
@@ -46,6 +50,8 @@ namespace RoleManagement.Services
             }
             catch
             {
+                Logger.Error("Failed to retreive user details .");
+
                 throw;
             }
             finally

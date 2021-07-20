@@ -15,10 +15,10 @@ namespace RoleManagement.Data
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class RolesManagementEntities1 : DbContext
+    public partial class RolesManagementEntities : DbContext
     {
-        public RolesManagementEntities1()
-            : base("name=RolesManagementEntities1")
+        public RolesManagementEntities()
+            : base("name=RolesManagementEntities")
         {
         }
     
@@ -27,9 +27,93 @@ namespace RoleManagement.Data
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<RoleType> RoleTypes { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<Login> Logins { get; set; }
+        public virtual DbSet<Log> Logs { get; set; }
+    
+        public virtual int DeleteData(Nullable<int> r_id)
+        {
+            var r_idParameter = r_id.HasValue ?
+                new ObjectParameter("R_id", r_id) :
+                new ObjectParameter("R_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteData", r_idParameter);
+        }
+    
+        public virtual int DeleteRoleData(Nullable<int> r_id)
+        {
+            var r_idParameter = r_id.HasValue ?
+                new ObjectParameter("R_id", r_id) :
+                new ObjectParameter("R_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteRoleData", r_idParameter);
+        }
+    
+        public virtual ObjectResult<GetData_Result> GetData()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetData_Result>("GetData");
+        }
+    
+        public virtual ObjectResult<GetRoleType_Result> GetRoleType()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetRoleType_Result>("GetRoleType");
+        }
+    
+        public virtual int InsertData(string r_Name, Nullable<int> r_RoleTypeId, Nullable<System.DateTime> r_EffectiveFrom, Nullable<int> r_isActive, Nullable<System.DateTime> r_CreateDate, Nullable<System.DateTime> r_ModifyDate)
+        {
+            var r_NameParameter = r_Name != null ?
+                new ObjectParameter("R_Name", r_Name) :
+                new ObjectParameter("R_Name", typeof(string));
+    
+            var r_RoleTypeIdParameter = r_RoleTypeId.HasValue ?
+                new ObjectParameter("R_RoleTypeId", r_RoleTypeId) :
+                new ObjectParameter("R_RoleTypeId", typeof(int));
+    
+            var r_EffectiveFromParameter = r_EffectiveFrom.HasValue ?
+                new ObjectParameter("R_EffectiveFrom", r_EffectiveFrom) :
+                new ObjectParameter("R_EffectiveFrom", typeof(System.DateTime));
+    
+            var r_isActiveParameter = r_isActive.HasValue ?
+                new ObjectParameter("R_isActive", r_isActive) :
+                new ObjectParameter("R_isActive", typeof(int));
+    
+            var r_CreateDateParameter = r_CreateDate.HasValue ?
+                new ObjectParameter("R_CreateDate", r_CreateDate) :
+                new ObjectParameter("R_CreateDate", typeof(System.DateTime));
+    
+            var r_ModifyDateParameter = r_ModifyDate.HasValue ?
+                new ObjectParameter("R_ModifyDate", r_ModifyDate) :
+                new ObjectParameter("R_ModifyDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertData", r_NameParameter, r_RoleTypeIdParameter, r_EffectiveFromParameter, r_isActiveParameter, r_CreateDateParameter, r_ModifyDateParameter);
+        }
+    
+        public virtual int InsertRoleType(string r_Name, Nullable<int> r_isActive)
+        {
+            var r_NameParameter = r_Name != null ?
+                new ObjectParameter("R_Name", r_Name) :
+                new ObjectParameter("R_Name", typeof(string));
+    
+            var r_isActiveParameter = r_isActive.HasValue ?
+                new ObjectParameter("R_isActive", r_isActive) :
+                new ObjectParameter("R_isActive", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertRoleType", r_NameParameter, r_isActiveParameter);
+        }
+    
+        public virtual int InsertRoleTypeData(string r_Name, Nullable<int> r_isActive)
+        {
+            var r_NameParameter = r_Name != null ?
+                new ObjectParameter("R_Name", r_Name) :
+                new ObjectParameter("R_Name", typeof(string));
+    
+            var r_isActiveParameter = r_isActive.HasValue ?
+                new ObjectParameter("R_isActive", r_isActive) :
+                new ObjectParameter("R_isActive", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertRoleTypeData", r_NameParameter, r_isActiveParameter);
+        }
     
         public virtual int spDeleteRole(Nullable<int> r_id)
         {
@@ -40,6 +124,11 @@ namespace RoleManagement.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spDeleteRole", r_idParameter);
         }
     
+        public virtual ObjectResult<spGetLogin_Result> spGetLogin()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetLogin_Result>("spGetLogin");
+        }
+    
         public virtual ObjectResult<spGetRole_Result> spGetRole()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetRole_Result>("spGetRole");
@@ -48,6 +137,11 @@ namespace RoleManagement.Data
         public virtual ObjectResult<spGetRoles_Result> spGetRoles()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetRoles_Result>("spGetRoles");
+        }
+    
+        public virtual ObjectResult<spGetRolesData_Result> spGetRolesData()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetRolesData_Result>("spGetRolesData");
         }
     
         public virtual ObjectResult<spGetRoleType_Result> spGetRoleType()
@@ -84,6 +178,27 @@ namespace RoleManagement.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsertRole", r_NameParameter, r_RoleTypeIdParameter, r_EffectiveFromParameter, r_isActiveParameter, r_CreateDateParameter, r_ModifyDateParameter);
         }
     
+        public virtual int spSaveRole(Nullable<int> r_id, string r_Name, Nullable<int> r_RoleTypeId, Nullable<System.DateTime> r_EffectiveFrom)
+        {
+            var r_idParameter = r_id.HasValue ?
+                new ObjectParameter("R_id", r_id) :
+                new ObjectParameter("R_id", typeof(int));
+    
+            var r_NameParameter = r_Name != null ?
+                new ObjectParameter("R_Name", r_Name) :
+                new ObjectParameter("R_Name", typeof(string));
+    
+            var r_RoleTypeIdParameter = r_RoleTypeId.HasValue ?
+                new ObjectParameter("R_RoleTypeId", r_RoleTypeId) :
+                new ObjectParameter("R_RoleTypeId", typeof(int));
+    
+            var r_EffectiveFromParameter = r_EffectiveFrom.HasValue ?
+                new ObjectParameter("R_EffectiveFrom", r_EffectiveFrom) :
+                new ObjectParameter("R_EffectiveFrom", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSaveRole", r_idParameter, r_NameParameter, r_RoleTypeIdParameter, r_EffectiveFromParameter);
+        }
+    
         public virtual int spUpdateRole(Nullable<int> r_id, string r_Name, Nullable<int> r_RoleTypeId, Nullable<System.DateTime> r_EffectiveFrom, Nullable<bool> r_isActive, Nullable<System.DateTime> r_CreateDate, Nullable<System.DateTime> r_ModifyDate)
         {
             var r_idParameter = r_id.HasValue ?
@@ -115,6 +230,19 @@ namespace RoleManagement.Data
                 new ObjectParameter("R_ModifyDate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdateRole", r_idParameter, r_NameParameter, r_RoleTypeIdParameter, r_EffectiveFromParameter, r_isActiveParameter, r_CreateDateParameter, r_ModifyDateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> spValidateUser(string r_Email, string r_Password)
+        {
+            var r_EmailParameter = r_Email != null ?
+                new ObjectParameter("R_Email", r_Email) :
+                new ObjectParameter("R_Email", typeof(string));
+    
+            var r_PasswordParameter = r_Password != null ?
+                new ObjectParameter("R_Password", r_Password) :
+                new ObjectParameter("R_Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spValidateUser", r_EmailParameter, r_PasswordParameter);
         }
     
         public virtual int UpdateData(Nullable<int> r_id, string r_Name, Nullable<int> r_RoleTypeId, Nullable<System.DateTime> r_EffectiveFrom, Nullable<int> r_isActive, Nullable<System.DateTime> r_CreateDate, Nullable<System.DateTime> r_ModifyDate)
@@ -167,48 +295,21 @@ namespace RoleManagement.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateRoleData", r_idParameter, r_NameParameter, r_isActiveParameter);
         }
     
-        public virtual int spSaveRole(Nullable<int> r_id, string r_Name, Nullable<int> r_RoleTypeId, Nullable<System.DateTime> r_EffectiveFrom)
+        public virtual ObjectResult<Nullable<bool>> spResetPassword(string email, string password, string newPassword)
         {
-            var r_idParameter = r_id.HasValue ?
-                new ObjectParameter("R_id", r_id) :
-                new ObjectParameter("R_id", typeof(int));
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
     
-            var r_NameParameter = r_Name != null ?
-                new ObjectParameter("R_Name", r_Name) :
-                new ObjectParameter("R_Name", typeof(string));
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
     
-            var r_RoleTypeIdParameter = r_RoleTypeId.HasValue ?
-                new ObjectParameter("R_RoleTypeId", r_RoleTypeId) :
-                new ObjectParameter("R_RoleTypeId", typeof(int));
+            var newPasswordParameter = newPassword != null ?
+                new ObjectParameter("NewPassword", newPassword) :
+                new ObjectParameter("NewPassword", typeof(string));
     
-            var r_EffectiveFromParameter = r_EffectiveFrom.HasValue ?
-                new ObjectParameter("R_EffectiveFrom", r_EffectiveFrom) :
-                new ObjectParameter("R_EffectiveFrom", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSaveRole", r_idParameter, r_NameParameter, r_RoleTypeIdParameter, r_EffectiveFromParameter);
-        }
-    
-        public virtual ObjectResult<spGetRolesData_Result> spGetRolesData()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetRolesData_Result>("spGetRolesData");
-        }
-    
-        public virtual ObjectResult<spGetRole1_Result> spGetRole1()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetRole1_Result>("spGetRole1");
-        }
-    
-        public virtual ObjectResult<string> spValidateUser(string r_Username, string r_Password)
-        {
-            var r_UsernameParameter = r_Username != null ?
-                new ObjectParameter("R_Username", r_Username) :
-                new ObjectParameter("R_Username", typeof(string));
-    
-            var r_PasswordParameter = r_Password != null ?
-                new ObjectParameter("R_Password", r_Password) :
-                new ObjectParameter("R_Password", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spValidateUser", r_UsernameParameter, r_PasswordParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("spResetPassword", emailParameter, passwordParameter, newPasswordParameter);
         }
     }
 }

@@ -1,77 +1,40 @@
 ﻿<!DOCTYPE html>
-<html>
+<html >
 <head>
-    <TITLE>Login html</TITLE>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!--CSS reference-->
-    <link rel="stylesheet" href="style.css" />
     <!--Font awesome icons -->
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
+    <!--Boostrap-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!--AngularJS-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <!--AngularJS Routing-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-    <!--Controller-->
-    <script type="text/javascript" src="/Scripts/login.js"></script>
+    <!--AngularJS Reference-->
+    <script src="Scripts/angular.js"></script>
+    <!--AngularJs Routing-->
+    <script src="Scripts/angular-route.js"></script>
+    <!--AngularJS Pagination-->
+    <script type="text/javascript" src="/Scripts/dirPagination.js"></script>
+    <!--AngularJS App-->
+    <script type="text/javascript" src="/app.js"></script>
+    <!--AngularJS Login Controller-->
+    <script type="text/javascript" src="/jsControllers/loginController.js"></script>
+    <!--AngularJS dashboard Controller-->
+    <script type="text/javascript" src="/jsControllers/dashboardController.js"></script>
+    <!--AngularJS forgotPassword Controller-->
+    <script type="text/javascript" src="/jsControllers/forgotPassword.js"></script>
+    <!--AngularJS resetPassword Controller-->
+    <script type="text/javascript" src="/jsControllers/resetPassword.js"></script>
     <!--Service-->
-    <script type="text/javascript" src="/Scripts/Service.js"></script>
+    <script type="text/javascript" src="/Service/Service.js"></script>
+    <!--resetService-->
+    <script type="text/javascript" src="/Service/resetPasswordService.js"></script>
 </head>
-<body ng-app="App" ng-controller="loginController">
+<body ng-app="App">
+  
 
-    <form name="myForm">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" ng-model="uName" name="uname" required class="form-control">
-                        <div ng-show="myForm.pass.$error.required &amp;&amp; myForm.pass.$touched" class="error">Required!</div>
-
-                    </div>
-                </div>
-
-
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="psw"><b>Password</b></label>
-                        <div class="input-group">
-                            <input type="{{inputType}}" placeholder="Enter Password" ng-model="password" name="psw" required class="form-control">
-                            <span class="input-group-addon">
-                                <span class="{{showHideClass}}" ng-click="showPassword()" style="cursor:pointer"></span>
-                            </span>
-                            <div ng-show="myForm.pass.$error.required &amp;&amp; myForm.pass.$touched" class="error">Required!</div>
-                        </div>
-                    </div>
-                    </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <button ng-click="authenticate()" ng-disabled="myForm.$invalid" class="btn btn-success pull-right">Login</button>
-                        
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div ng-show="showError" class="alert alert-danger">Wrong credentials!</div>
-                    <div ng-show="showSuccess" class="alert alert-success">Login Successful!</div>
-                </div>
-            </div>
-            <div ng-view></div>
-
-
-
-
-        </div>
-    </form>
-
-
-
+<div ng-view> </div>
 </body>
 </html>

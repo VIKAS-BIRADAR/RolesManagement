@@ -1,0 +1,17 @@
+DEBUG 2021-06-28 16:49:22,292 13477ms LoginController        Get                - debug message
+DEBUG 2021-06-28 17:29:27,939  2388ms LoginController        Get                - debug message
+DEBUG 2021-06-29 11:28:41,486   884ms RolesController        Get                - Calling the  get Role details service file
+INFO  2021-06-29 11:28:41,939  1337ms RolesController        Get                - Successfully able to get role details
+DEBUG 2021-06-29 17:11:27,151   548ms RolesController        Get                - Calling the  get Role details service file
+DEBUG 2021-06-29 17:11:27,471   869ms RolesService           GetRoleDetails     - able to get the roles service details
+INFO  2021-06-29 17:11:27,576   973ms RolesService           GetRoleDetails     - able to retreive data from database
+INFO  2021-06-29 17:11:27,602   999ms RolesController        Get                - Successfully able to get role details
+DEBUG 2021-06-29 17:11:57,433 30830ms RoleTypeController     GetRoleType        - Calling the Get role types details service function
+DEBUG 2021-06-29 17:11:57,482 30879ms RoleTypeService        GetRoleTypeData    - able to retreive the roletypeservice from database
+INFO  2021-06-29 17:11:57,712 31109ms RoleTypeService        GetRoleTypeData    - Successfully able  to retreive data from database
+INFO  2021-06-29 17:11:57,746 31143ms RoleTypeService        GetRoleTypeData    - Successfully able  to retreive data from database
+INFO  2021-06-29 17:11:57,749 31146ms RoleTypeController     GetRoleType        - Successfully able to get  role type details
+DEBUG 2021-06-29 17:12:18,044 51441ms LoginController        Get                - Calling the  get login details service file
+DEBUG 2021-06-29 17:12:18,051 51448ms LoginService           GetLoginDetails    - Entered the get login details file
+INFO  2021-06-29 17:12:18,096 51493ms LoginService           GetLoginDetails    - able to retreive data from database
+INFO  2021-06-29 17:12:18,113 51510ms LoginController        Get                - Successfully able to get login details

@@ -67,8 +67,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HTML\forgotPassword.html" />
+    <Content Include="HTML\resetPassword.html" />
+    <Content Include="image\loginPage.svg" />
+    <Content Include="HTML\Home.html" />
     <Content Include="index.html" />
-    <Content Include="dashboard.html" />
+    <Content Include="HTML\dashboard.html" />
+    <Content Include="jsControllers\dashboardController.js" />
+    <Content Include="jsControllers\forgotPassword.js" />
+    <Content Include="jsControllers\loginController.js" />
+    <Content Include="image\Profile.png" />
+    <Content Include="jsControllers\resetPassword.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -95,7 +104,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\app.js" />
+    <Content Include="app.js" />
     <Content Include="Scripts\dirPagination.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />
@@ -835,8 +844,9 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
-    <Content Include="Scripts\login.js" />
-    <Content Include="Scripts\Service.js" />
+    <Content Include="HTML\Login.html" />
+    <Content Include="Service\resetPasswordService.js" />
+    <Content Include="Service\Service.js" />
     <Content Include="Scripts\sitemap.xml" />
     <Content Include="Scripts\test-bundles\angular-aria.js" />
     <Content Include="Scripts\test-bundles\angular-cookies.js" />
@@ -846,7 +856,9 @@
     <Content Include="Scripts\test-bundles\angular-route.js" />
     <Content Include="Scripts\test-bundles\angular-sanitize.js" />
     <Content Include="Scripts\test-bundles\angular-touch.js" />
-    <Content Include="style.css" />
+    <Content Include="stylesheet\loginstyle.css" />
+    <Content Include="stylesheet\dashboardstyle.css" />
+    <Content Include="image\homePage.svg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -875,6 +887,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

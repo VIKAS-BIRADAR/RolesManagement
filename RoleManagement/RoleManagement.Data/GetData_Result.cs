@@ -11,13 +11,14 @@ namespace RoleManagement.Data
 {
     using System;
     
-    public partial class spGetRole1_Result
+    public partial class GetData_Result
     {
         public int id { get; set; }
-        public string RoleName { get; set; }
-        public int RoleTypeId { get; set; }
-        public string RoleType { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> RoleTypeId { get; set; }
         public Nullable<System.DateTime> EffectiveFrom { get; set; }
+        public Nullable<bool> isActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<System.DateTime> ModifyDate { get; set; }
     }
 }

@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RolesManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Thread" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Level" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Logger" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Message" Type="varchar" MaxLength="4000" Nullable="false" />
+    <Property Name="Exception" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="30" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+    <Property Name="Username" Type="nvarchar" MaxLength="10" />
+    <Property Name="Password" Type="nvarchar" MaxLength="10" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RolesManagement.dbo.Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="RoleTypeId" Type="int" />
+    <Property Name="EffectiveFrom" Type="datetime" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ModifyDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RoleType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <Association Name="FK__Roles__RoleTypeI__29572725">
+    <End Role="RoleType" Type="Self.RoleType" Multiplicity="0..1" />
+    <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="RoleTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DeleteData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteRoleData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetRoleType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="InsertData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_Name" Type="varchar" Mode="In" />
+    <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
+    <Parameter Name="R_EffectiveFrom" Type="date" Mode="In" />
+    <Parameter Name="R_isActive" Type="int" Mode="In" />
+    <Parameter Name="R_CreateDate" Type="date" Mode="In" />
+    <Parameter Name="R_ModifyDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="InsertRoleType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_Name" Type="varchar" Mode="In" />
+    <Parameter Name="R_isActive" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertRoleTypeData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_Name" Type="varchar" Mode="In" />
+    <Parameter Name="R_isActive" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spDeleteRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spGetRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spGetRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spGetRolesData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spGetRoleType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spInsertRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
+    <Parameter Name="R_EffectiveFrom" Type="datetime" Mode="In" />
+    <Parameter Name="R_isActive" Type="bit" Mode="In" />
+    <Parameter Name="R_CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="R_ModifyDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="spResetPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewPassword" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="spSaveRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_id" Type="int" Mode="In" />
+    <Parameter Name="R_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
+    <Parameter Name="R_EffectiveFrom" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="spUpdateRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_id" Type="int" Mode="In" />
+    <Parameter Name="R_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
+    <Parameter Name="R_EffectiveFrom" Type="datetime" Mode="In" />
+    <Parameter Name="R_isActive" Type="bit" Mode="In" />
+    <Parameter Name="R_CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="R_ModifyDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="spValidateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="R_Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_id" Type="int" Mode="In" />
+    <Parameter Name="R_Name" Type="varchar" Mode="In" />
+    <Parameter Name="R_RoleTypeId" Type="int" Mode="In" />
+    <Parameter Name="R_EffectiveFrom" Type="date" Mode="In" />
+    <Parameter Name="R_isActive" Type="int" Mode="In" />
+    <Parameter Name="R_CreateDate" Type="date" Mode="In" />
+    <Parameter Name="R_ModifyDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="UpdateRoleData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="R_id" Type="int" Mode="In" />
+    <Parameter Name="R_Name" Type="varchar" Mode="In" />
+    <Parameter Name="R_isActive" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="RolesManagementModelStoreContainer">
+    <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleType" EntityType="Self.RoleType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Roles].[id] AS [id], 
+    [Roles].[Name] AS [Name], 
+    [Roles].[RoleTypeId] AS [RoleTypeId], 
+    [Roles].[EffectiveFrom] AS [EffectiveFrom], 
+    [Roles].[isActive] AS [isActive], 
+    [Roles].[CreateDate] AS [CreateDate], 
+    [Roles].[ModifyDate] AS [ModifyDate]
+    FROM [dbo].[Roles] AS [Roles]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Roles__RoleTypeI__29572725" Association="Self.FK__Roles__RoleTypeI__29572725">
+      <End Role="RoleType" EntitySet="RoleType" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

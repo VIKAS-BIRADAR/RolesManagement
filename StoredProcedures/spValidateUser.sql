@@ -1,9 +1,8 @@
-CREATE  PROCEDURE spValidateUser(@R_Username nvarchar(10),@R_Password nvarchar(10))
+Create  PROCEDURE spValidateUser(@R_Email nvarchar(50),@R_Password nvarchar(10))
 AS
 BEGIN
-IF EXISTS(SELECT * FROM Login WHERE Username = @R_Username AND Password = @R_Password)
-    SELECT 'true' AS UserExists
+IF EXISTS(SELECT * FROM Login WHERE Email = @R_Email AND Password = @R_Password)
+      SELECT CAST(1 AS BIT) AS UserExists
 ELSE
-    SELECT 'false' AS UserExists
-
+    SELECT CAST(0 AS BIT) AS UserExists
 END

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
 
+
 namespace RoleManagement.API
 {
     public class WebApiApplication : System.Web.HttpApplication
@@ -12,6 +13,7 @@ namespace RoleManagement.API
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            
         }
     }
 }

@@ -106,3 +106,5 @@ D:\RoleManagement\RoleManagement\RoleManagement.API\bin\System.Numerics.Vectors.
 D:\RoleManagement\RoleManagement\RoleManagement.API\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\RoleManagement\RoleManagement\RoleManagement.API\bin\System.Text.Encodings.Web.xml
 D:\RoleManagement\RoleManagement\RoleManagement.API\bin\System.Web.Http.Cors.xml
+D:\RoleManagement\RoleManagement\RoleManagement.API\bin\log4net.dll
+D:\RoleManagement\RoleManagement\RoleManagement.API\bin\log4net.xml

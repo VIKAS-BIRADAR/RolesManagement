@@ -1,0 +1,66 @@
+﻿<head>
+<link rel="stylesheet" href="/stylesheet/loginstyle.css" />
+</head>
+
+<body ng-controller="loginController">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#!/">RoleManagement</a>
+            </div>
+            <ul class="nav navbar-nav">
+            <li><a href="#!/">Home</a></li>
+                <li><a href="#!login">login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <form name="myForm">
+        <div class="container">
+            <div class="row">
+                <h1>Sign in</h1>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="uname"><b>Email</b></label>
+                        <input type="text" placeholder="Enter email" ng-model="Email" name="uname" required class="form-control">
+                        <div ng-show="myForm.pass.$error.required &amp;&amp; myForm.pass.$touched" class="error">Required!</div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="psw"><b>Password</b></label>
+                        <div class="input-group">
+                            <input type="{{inputType}}" placeholder="Enter Password" ng-model="password" name="psw" required class="form-control">
+                            <span class="input-group-addon">
+                                <span class="{{showHideClass}}" ng-click="showPassword()" style="cursor:pointer"></span>
+                            </span>
+                            <div ng-show="myForm.pass.$error.required &amp;&amp; myForm.pass.$touched" class="error">Required!</div>
+                        </div>
+                    </div>
+                    <span class="forgotPassword">Forgot <a href="#!forgotPassword">password?</a></span>
+                    <div style="align-items:flex-end">
+                        <span class="resetPassword">Reset <a href="#!resetPassword">password?</a></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button ng-click="authenticate()" ng-disabled="myForm.$invalid" class="btn btn-success pull-right">Login</button>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div ng-show="showError" class="alert alert-danger">Wrong credentials!</div>
+                    <div ng-show="showSuccess" class="alert alert-success">Login Successful!</div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+
+
+</body>

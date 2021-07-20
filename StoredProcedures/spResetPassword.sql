@@ -1,0 +1,1 @@
+exec spResetPassword @Email = 'michaelscott@office.com' , @Password ='mo@123' , @NewPassword = 'abcl@123';

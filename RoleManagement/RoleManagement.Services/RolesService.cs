@@ -7,12 +7,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
 
 namespace RoleManagement.Services.Services
 {
     public class RolesService : IRolesService
     {
-       
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(RolesService));
+
         public List<GetRoles> GetRoleDetails()
         {
             dbConnector objConn = new dbConnector();
@@ -21,6 +23,7 @@ namespace RoleManagement.Services.Services
 
             try
             {
+                Logger.Debug("able to get the roles service details");
                 List<GetRoles> _listGetRoles = new List<GetRoles>();
 
                 if (Conn.State != System.Data.ConnectionState.Open) Conn.Open();
@@ -45,11 +48,12 @@ namespace RoleManagement.Services.Services
 
 
                 }
-
+                Logger.Info("able to retreive data from database");
                 return _listGetRoles;
             }
             catch
             {
+                Logger.Error("Failed to retreive user details .");
                 throw;
             }
             finally
@@ -74,6 +78,7 @@ namespace RoleManagement.Services.Services
 
             try
             {
+                Logger.Debug("able to post and update the roles service");
                 if (Conn.State != System.Data.ConnectionState.Open) Conn.Open();
 
                 SqlCommand objCommand = new SqlCommand("spSaveRole", Conn);
@@ -97,6 +102,7 @@ namespace RoleManagement.Services.Services
             }
             catch
             {
+                Logger.Error("Failed to retreive user details .");
                 throw;
             }
             finally
@@ -122,6 +128,7 @@ namespace RoleManagement.Services.Services
 
             try
             {
+                Logger.Debug("able to delete the roles service");
                 if (Conn.State != System.Data.ConnectionState.Open) Conn.Open();
 
                 SqlCommand objCommand = new SqlCommand("spDeleteRole", Conn);
@@ -140,6 +147,7 @@ namespace RoleManagement.Services.Services
             }
             catch
             {
+                Logger.Error("Failed to retreive user details .");
                 throw;
             }
             finally

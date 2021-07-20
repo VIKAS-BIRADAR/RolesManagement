@@ -9,17 +9,17 @@ namespace RoleManagement.Data.Models
 {
     public class GetRoles
     {
-        public int id { get; set; }
+        public int? id { get; set; }
         [Required(ErrorMessage ="RoleName is necessary")]
         [StringLength(15,ErrorMessage ="Can have upto 15 Characters")]
-       
         public string RoleName { get; set; }
+        [Required(ErrorMessage = "RoleTypeId is necessary")]
         public int RoleTypeId { get; set; }
-        [Required(ErrorMessage ="RoleType is necessary")]
+      
         public string RoleType { get; set; }
         [Required(ErrorMessage ="Date is necessary")]
         public DateTime EffectiveFrom { get; set; }
-        public DateTime CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
         
     }
 }

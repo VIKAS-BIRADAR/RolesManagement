@@ -12,3 +12,5 @@ D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\System.Data.S
 D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\EntityFramework.dll
 D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\System.Data.SqlClient.xml
 D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\EntityFramework.xml
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\log4net.dll
+D:\RoleManagement\RoleManagement\RoleManagement.Services\bin\Debug\log4net.xml
